@@ -1,0 +1,17 @@
+current directory: /vagrant/Aquel/vendor/bundle/ruby/2.5.0/gems/bindex-0.7.0/ext/skiptrace
+/usr/bin/ruby2.5 -r ./siteconf20190603-5114-1xj87tj.rb extconf.rb
+creating Makefile
+
+current directory: /vagrant/Aquel/vendor/bundle/ruby/2.5.0/gems/bindex-0.7.0/ext/skiptrace
+make "DESTDIR=" clean
+
+current directory: /vagrant/Aquel/vendor/bundle/ruby/2.5.0/gems/bindex-0.7.0/ext/skiptrace
+make "DESTDIR="
+compiling cruby.c
+linking shared-object skiptrace/cruby.so
+
+current directory: /vagrant/Aquel/vendor/bundle/ruby/2.5.0/gems/bindex-0.7.0/ext/skiptrace
+make "DESTDIR=" install
+make: Warning: File 'cruby.so' has modification time 0.5 s in the future
+/usr/bin/install -c -m 0755 cruby.so ./.gem.20190603-5114-1k7k37p/skiptrace
+make: warning:  Clock skew detected.  Your build may be incomplete.
