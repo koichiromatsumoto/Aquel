@@ -4,8 +4,13 @@
 
 // 投稿ページ
 .post {
-	z-index: 30;
-	position: absolute;
+	z-index: 40;
+	position: relative;
 	top: 0;
 	right: 0;
+}
+
+.post-new h2{
+	width: 100%;
+	text-align: center;
 }

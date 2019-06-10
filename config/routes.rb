@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get 'posts/top'
   get 'posts/about'
   get 'posts/hashtag'
+  post 'posts/confirm'
   resources :posts
 
 # Albumsコントローラルーティング
