@@ -1,2 +1,21 @@
-<h1>Users#withdraw_view</h1>
-<p>Find me in app/views/users/withdraw_view.html.erb</p>
+<div class="container withdraw">
+	<h2>退会</h2>
+	<div class="withdraw-box">
+		<div class="row">
+			<div class="col-md-offset-2 col-md-8">
+				<h4> 退会されますとこのアカウントでのログインができなくなります（投稿は削除されません）。</h4>
+				<h3><strong>本当に退会しますか？</strong></h3>
+			</div>
+		</div>
+		<div class="row">
+			<%= form_for(current_user, url:user_withdraw_path(current_user.id)) do |f| %>
+				<div class="col-md-5">
+					<%= link_to "いいえ", user_path(current_user.id), class:"btn btn-default btn-lg pull-right" %>
+				</div>
+				<div class="col-md-offset-2 col-md-5">
+					<%= f.submit "はい", class:"btn btn-danger btn-lg pull-left" %>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</div>

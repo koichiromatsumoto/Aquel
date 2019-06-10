@@ -1,2 +1,35 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<div class="container">
+	<div class="row">
+		<div class="col-md-offset-1 col-md-10">
+			<h2 class="userindex-title">ユーザ一覧</h2>
+
+			<table class="table userindex">
+				<thead>
+					<tr>
+						<th>ユーザID</th>
+						<th>ユーザ名</th>
+						<th>ステータス</th>
+						<th></th>
+						<th>権限</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @users.each do |user| %>
+					<tr>
+						<td><%= user.id %></td>
+						<td class="name"><%= link_to user_path(user.id) do %><%= user.name %><% end %></td>
+						<td><% if user.status == false %>（退会済み）<% end %></td>
+						<td><% if user.admin == false && user.status == true %><%= link_to "強制退会", user_withdraw_path(user.id), method: :patch, data:{confirm:"本当に退会させますか?"} %><% end %></td>
+						<td><% if user.admin == true %>管理者<% end %></td>
+						<td><% if user.admin == false %><%= link_to "管理者にする", user_admin_path(user.id), method: :patch, data:{confirm:"本当に管理者にしますか?"} %>
+							<% else %><%= link_to "ユーザにする", user_admin_path(user.id), method: :patch, data:{confirm:"本当にユーザにしますか?"} %>
+							<% end %></td>
+					</tr>
+					<% end %>
+			    </tbody>
+			</table>
+
+		</div>
+	</div>
+</div>

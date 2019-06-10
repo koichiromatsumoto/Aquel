@@ -1,2 +1,30 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="container">
+	<div class="row">
+		<div class="col-md-offset-1 col-md-3">
+			<%= attachment_image_tag @user, :profile_image, :fill, 150, 150, format: 'jpg', fallback: 'no_image.jpg', size:'150x150', class:"img-circle pull-right img-user", id:"modal-open", "data-target":"user-show" %>
+		</div>
+		<div class="col-md-7">
+			<div class="user-name">
+				<%= @user.name %>
+			</div>
+			<div class="user-introduction">
+				<%= @user.introduction %>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-offset-1 col-md-3">
+			<div class="timeline">
+			</div>
+		</div>
+		<div class="col-md-7">
+			<nav class="navbar navbar-default">
+			</nav>
+		</div>
+	</div>
+
+	<%= render 'users/edit' %>
+
+</div>
+

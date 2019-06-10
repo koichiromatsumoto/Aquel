@@ -1,0 +1,75 @@
+
+<!-- ユーザプロフィール画像からのユーザ詳細（モーダル） -->
+<div id="user-show" class="modal-text">
+    <h3>Profile</h3>
+    <p class="pull-right"><a class="user-show-close" id="modal-close"><i class="fas fa-times"></i></a></p>
+    <div class="container-fluid modal-box">
+    	<div class="row">
+    		<%= form_for @user, url: user_path(@user.id)  do |f| %>
+    		<div class="col-md-offset-1 col-md-2">
+    			<%= attachment_image_tag @user, :profile_image, :fill, 150, 150, format: 'jpg', fallback: 'no_image.jpg', size:'150x150', class:"img-circle modal-img-user" %>
+    		</div>
+    		<div class="col-md-offset-1 col-md-6">
+			    <div class="modal-field">
+			        <%= f.label :name, "ユーザ名" %>
+                    <%= f.text_field :name, autocomplete: "name", readonly: true, class:"form-control" %>
+                </div>
+                <div class="modal-field">
+				    <%= f.label :email, "E-mail" %>
+				    <%= f.email_field :email, autocomplete: "email", readonly: true, class:"form-control" %>
+			    </div>
+			    <div class="modal-field">
+				    <%= f.label :introduction, "紹介文" %>
+				    <%= f.text_area :introduction, autocomplete: "introduction", readonly: true, class:"form-control" %>
+			    </div>
+			    <% end %>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-offset-9 col-md-3">
+				<button class="btn-edituser modal-switch" data-target="user-edit">編集する</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- ユーザ編集（モーダル） -->
+<div id="user-edit" class="modal-text">
+    <h3>Profile編集</h3>
+    <p class="pull-right"><a class="user-show-close" id="modal-close"><i class="fas fa-times"></i></a></p>
+    <div class="container-fluid modal-box">
+    	<div class="row">
+    		<%= form_for @user, url: user_path(@user.id)  do |f| %>
+			<%= render "devise/shared/error_messages", resource: @user %>
+
+    		<div class="col-md-offset-1 col-md-2">
+    			<%= attachment_image_tag @user, :profile_image, :fill, 150, 150, format: 'jpg', fallback: 'no_image.jpg', size:'150x150', class:"img-circle modal-img-user" %>
+    			<%= f.attachment_field :profile_image, class:"select-profile-image" %>
+    		</div>
+    		<div class="col-md-offset-1 col-md-6">
+			    <div class="modal-field">
+			        <%= f.label :name, "ユーザ名" %>
+                    <%= f.text_field :name, autocomplete: "name", class:"form-control" %>
+                </div>
+                <div class="modal-field">
+				    <%= f.label :email, "E-mail" %>
+				    <%= f.email_field :email, autocomplete: "email", class:"form-control" %>
+			    </div>
+			    <div class="modal-field">
+				    <%= f.label :introduction, "紹介文" %>
+				    <%= f.text_area :introduction, autocomplete: "introduction", class:"form-control" %>
+			    </div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3">
+				<%= link_to "退会", users_withdraw_view_path, class:"btn-withdrawuser" %>
+			</div>
+			<div class="col-md-offset-5 col-md-4">
+				<span class="btn-edituser modal-switch" data-target="user-show">キャンセル</span>
+				<%= f.submit "保存", class:"btn-edituser" %>
+			<% end %>
+			</div>
+		</div>
+	</div>
+</div>

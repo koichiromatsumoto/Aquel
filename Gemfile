@@ -72,5 +72,7 @@ gem "refile-mini_magick"
 gem 'jquery-rails'
 # 検索用
 gem 'ransack'
+# cssフレームワーク
+gem 'bootstrap-sass', '~> 3.3.6'
 
 
