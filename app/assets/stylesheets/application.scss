@@ -30,6 +30,7 @@ body {
     font-family: Verdana,"游ゴシック Medium","Yu Gothic Medium","游ゴシック体",YuGothic,sans-serif;
     color: #fff;
     position: relative;
+    z-index: 10;
 }
 
 @keyframes gradationTest {
@@ -95,13 +96,14 @@ body {
 	border: solid 4px #fff;
 	text-align: center;
 	font-size: 25px;
-	overflow: hidden;
-	font-weight: bold;
 	transition: .4s;
 	position: fixed;
 	top: 70px;
 	right: 70px;
 	z-index: 20;
+	box-shadow: 5px 5px 10px #000;
+	-webkit-box-shadow: 5px 5px 10px #000;
+	-moz-box-shadow: 5px 5px 10px #000;
 }
 
 .post-btn:hover {
