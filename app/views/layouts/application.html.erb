@@ -1,28 +1,152 @@
 
 <!DOCTYPE html>
-<html lang="ja">
+<html>
   <head>
-
     <title>Aquel</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" >
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
   </head>
   <body>
+
+    <header>
+      <nav class="navbar navbar-fixed-top">
+        <div class="container-fluid">
+          <div class="row">
+
+            <!-- ロゴ -->
+          <div class="col-xs-2 navbar-logo">
+            <%= link_to root_path, class: "navbar-logo-box" do %>
+              <%= image_tag "logo.png", class:"logo", alt:"ロゴマーク" %>
+            <% end %>
+          </div>
+
+          <!-- 右側リンク -->
+          <div class="col-xs-10 navbar-item">
+
+            <% if user_signed_in? && current_user.admin == false %><!--ユーザがログインしたとき-->
+
+              <div class="nav navbar-nav pull-right nav-menu">
+                <%= link_to destroy_user_session_path, method: :delete, class:"nav-menu-item" do%>
+                  <div class="nav-item-box pull-right">
+                  <i class="fas fa-sign-out-alt"></i> Log out</div>
+                <% end %>
+                <%= link_to user_path(current_user.id), class:"nav-menu-item" do%>
+                  <div class="nav-item-box pull-right">
+                  <i class="fas fa-user-alt"></i> My page</div>
+                <% end %>
+                <%= link_to rooms_path, class:"nav-menu-item" do%>
+                  <div class="nav-item-box pull-right">
+                  <i class="fas fa-comment-dots"></i> Talk</div>
+                <% end %>
+                <%= link_to posts_path, class:"nav-menu-item" do%>
+                  <div class="nav-item-box pull-right">
+                  <i class="fas fa-search"></i> Search</div>
+                <% end %>
+              </div>
+
+            <% elsif user_signed_in? && current_user.admin == true %> <!--adminのとき-->
+
+                <div class="nav navbar-nav pull-right nav-menu">
+                  <%= link_to destroy_user_session_path, method: :delete, class:"nav-menu-item" do%>
+                    <div class="nav-item-box pull-right">
+                    <i class="fas fa-sign-out-alt"></i> Log out</div>
+                  <% end %>
+                  <%= link_to user_path(current_user.id), class:"nav-menu-item" do%>
+                    <div class="nav-item-box pull-right">
+                    <i class="fas fa-user-alt"></i> My page</div>
+                  <% end %>
+                  <%= link_to rooms_path, class:"nav-menu-item" do%>
+                    <div class="nav-item-box pull-right">
+                    <i class="fas fa-comment-dots"></i> Talk</div>
+                  <% end %>
+                  <%= link_to posts_path, class:"nav-menu-item" do%>
+                    <div class="nav-item-box pull-right">
+                    <i class="fas fa-search"></i> Search</div>
+                  <% end %>
+                </div>
+
+            <% else %><!-- ゲストユーザのとき -->
+
+              <div class="nav navbar-nav pull-right nav-menu">
+                <%= link_to new_user_registration_path, class:"nav-menu-item" do%>
+                  <div class="nav-item-box pull-right">
+                  <i class="fas fa-user-plus"></i> New</div>
+                <% end %>
+                <%= link_to new_user_session_path, class:"nav-menu-item" do%>
+                  <div class="nav-item-box pull-right">
+                  <i class="fas fa-sign-in-alt"></i> Log in</div>
+                <% end %>
+                <%= link_to rooms_path, class:"nav-menu-item" do%>
+                  <div class="nav-item-box pull-right">
+                  <i class="fas fa-comment-dots"></i> Talk</div>
+                <% end %>
+                <%= link_to posts_path, class:"nav-menu-item" do%>
+                  <div class="nav-item-box pull-right">
+                  <i class="fas fa-search"></i> Search</div>
+                <% end %>
+              </div>
+
+            <% end %>
+
+          </div>
+
+          </div>
+        </div>
+      </nav>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-offset-10 col-md-2">
+            <%= link_to new_post_path do %>
+              <div class="post-btn">
+                <div class="i-plus"><i class="fas fa-plus"></i></div>
+                <div class="i-images"><i class="fas fa-images"></i></div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+    </header>
+
+
     <%= yield %>
 
-    <!-- jQuery first, then Tether, then Bootstrap JS. -->
-    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+    <footer>
+      <nav class="navbar navbar-fixed-bottom">
+        <div class="container-fluid">
+          <div class="row">
+
+            <div class="col-md-offset-4 col-md-4 col-sm-offset-2 col-sm-8 footer-item">
+              <%= link_to posts_about_path, class:"footer-menu" do%>
+                <div class="footer-menu-item pull-left">
+                <i class="fas fa-tint"></i> About</div>
+              <% end %>
+
+              <% if user_signed_in? && current_user.admin == false %><!--ユーザがログインしたとき-->
+                <%= link_to contacts_path, class:"footer-menu" do%>
+                  <div class="footer-menu-item pull-right">
+                  <i class="fas fa-envelope"></i> Contact</div>
+                <% end %>
+              <% elsif user_signed_in? && current_user.admin == true %> <!--adminのとき-->
+                <%= link_to contacts_path, class:"footer-menu" do%>
+                  <div class="footer-menu-item pull-right">
+                  <i class="fas fa-envelope"></i> Contact</div>
+                <% end %>
+              <% else %><!-- ゲストユーザのとき -->
+                <%= link_to new_user_session_path, class:"footer-menu" do%>
+                  <div class="footer-menu-item pull-right">
+                  <i class="fas fa-envelope"></i> Contact</div>
+                <% end %>
+              <% end %>
+            </div>
+
+          </div>
+        </div>
+      </nav>
+    </footer>
+
   </body>
 </html>

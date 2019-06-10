@@ -1,0 +1,147 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	padding-top: 50px;
+	padding-bottom: 60px;
+    animation: gradationTest 10s infinite;
+    font-family: Verdana,"游ゴシック Medium","Yu Gothic Medium","游ゴシック体",YuGothic,sans-serif;
+    color: #fff;
+    position: relative;
+}
+
+@keyframes gradationTest {
+0% { background-color: #1CB5E0; }
+50% { background-color: #000046; }
+100% { background-color: #1CB5E0; }
+}
+
+/*ヘッダー*/
+.navbar{
+	background-color: rgba(0,0,0,0.7);
+}
+
+.logo{
+	width: 15vw;
+	height: 50px;
+
+}
+
+.navbar-header{
+	height: 50px;
+	line-height: 50px;
+}
+
+.navbar-item{
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+}
+
+.nav-menu{
+	width: 100%;
+}
+
+.nav-item-box{
+	height: 50px;
+	width: 14%;
+	color: #00ffff;
+	font-size: 1.3vw;
+}
+
+.nav-item-box:hover{
+	background-color: rgba(0,0,0,0.3);
+	color: #fff;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.welcome-message{
+	margin-right: 20px;
+	color: #fff;
+	font-size: 1.2vw;
+}
+
+.post-btn {
+	display: inline-block;
+	text-decoration: none;
+	color: #fff;
+	background: #ffa500;
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
+	border: solid 4px #fff;
+	text-align: center;
+	font-size: 25px;
+	overflow: hidden;
+	font-weight: bold;
+	transition: .4s;
+	position: fixed;
+	top: 70px;
+	right: 70px;
+	z-index: 20;
+}
+
+.post-btn:hover {
+	background: #fff;
+	color: #ffa500;
+}
+
+.post-btn .i-plus{
+    height: 25px;
+}
+
+.post-btn .fa-plus{
+	width: 60%;
+	text-align: left;
+	font-size: 15px;
+}
+
+.post-btn .fa-images{
+	width: 55%;
+	text-align: right;
+	font-size: 32px;
+}
+
+/*フッター*/
+.footer-item{
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+}
+
+.footer-menu-item{
+	color: #fff;
+	font-family: serif;
+	font-size: 1.3vw;
+	cursor: pointer;
+}
+
+.footer-menu-item:hover{
+	color: #00ffff;
+}
+
+/*ログイン、新規登録　モーダル画面*/
+

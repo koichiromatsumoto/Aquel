@@ -1,3 +1,11 @@
 // Place all the styles related to the posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// 投稿ページ
+.post {
+	z-index: 30;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
