@@ -94,3 +94,63 @@ $(function(){
 
     });
 });
+
+// ユーザ編集画面のイメージプレビュー
+$(function() {
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+
+      reader.onload = function (e) {
+        $('#user_img_prev').attr({
+          src: e.target.result,
+          width: "150px",
+          height: "150px"});
+      }
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+
+  $(".select-profile-image").change(function(){
+    $('#user_img_prev').removeClass('hidden');
+    $('.modal-img-user').remove();
+    readURL(this);
+  });
+});
+
+// 投稿一覧画面の新着orトレンド
+$(function(){
+    $('.late-posts').show();
+    $('.trend-posts').hide();
+
+    $('.late').click(function(){
+      $('.late-posts').show();
+      $('.trend-posts').hide();
+    });
+
+    $('.trend').click(function(){
+      $('.trend-posts').show();
+      $('.late-posts').hide();
+    });
+});
+
+// 新規投稿ページのイメージプレビュー
+$(function() {
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+
+      reader.onload = function (e) {
+        $('#post_img_prev').attr({
+          src: e.target.result,
+          width: "95%"});
+      }
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+
+  $("#post_img").change(function(){
+    $('#post_img_prev').removeClass('hidden');
+    readURL(this);
+  });
+});
