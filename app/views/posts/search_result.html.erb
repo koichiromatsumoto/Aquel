@@ -1,7 +1,7 @@
 <div class="container post-index">
 
-    <div class="index-cont">
-		<div class="row">
+	<div class="search-cont">
+	    <div class="row">
 			<div class="col-md-offset-10 col-md-1 post-order">
 				<div class="late">新着</div>
 			</div>
@@ -11,7 +11,7 @@
 		</div>
 
 		<div class="row index-box late-posts">
-			<% @late_posts.each do |post| %>
+			<% @search_late_posts.each do |post| %>
 			<div class="col-md-4 index-post-box">
 				<div class="post-img"><%= link_to post_path(post.id) do %><%= attachment_image_tag post, :post_image, :fill, 300, 300, format: 'jpg', fallback:'no_image.jpg', size:'300x300' %><% end %>
 				    <div class="post-title"><%= post.title %></div>
@@ -22,7 +22,7 @@
 		</div>
 
 		<div class="row index-box trend-posts">
-			<% @trend_posts.each do |post| %>
+			<% @search_trend_posts.each do |post| %>
 			<div class="col-md-4 index-post-box">
 				<div class="post-img"><%= link_to post_path(post.id) do %><%= attachment_image_tag post, :post_image, :fill, 300, 300, format: 'jpg', fallback:'no_image.jpg', size:'300x300' %><% end %>
 				    <div class="post-title"><%= post.title %></div>
@@ -31,6 +31,6 @@
 			</div>
 			<% end %>
 		</div>
-	</div>
+    </div>
 
 </div>

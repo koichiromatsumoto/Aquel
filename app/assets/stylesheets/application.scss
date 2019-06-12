@@ -55,6 +55,22 @@ body {
 	line-height: 50px;
 }
 
+.search{
+	padding-left: 20px;
+	padding-top: 8px;
+}
+
+.search .field{
+	width: 50%;
+	display: inline-block;
+}
+
+.search .input-group-btn{
+	display: inline-block;
+	position: relative;
+	right: 6px;
+}
+
 .navbar-item{
 	height: 50px;
 	line-height: 50px;
@@ -67,7 +83,7 @@ body {
 
 .nav-item-box{
 	height: 50px;
-	width: 14%;
+	width: 33%;
 	color: #00ffff;
 	font-size: 1.3vw;
 }
@@ -144,6 +160,4 @@ body {
 .footer-menu-item:hover{
 	color: #00ffff;
 }
-
-/*ログイン、新規登録　モーダル画面*/
 

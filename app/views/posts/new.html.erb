@@ -1,39 +1,33 @@
 <div class="container post">
 	<h2>投稿画面</h2>
-    <div class="post-new-box">
-    	<%= form_for @post, url: {action: 'confirm'} do |f| %>
+    <div class="post-box">
+    	<%= form_for @post, url:posts_path(@post.id) do |f| %>
 
     	<div class="row post-img">
 			<div class="col-md-12">
 				<%= f.label :post_image, "写真選択" %>
-				<%= f.attachment_field :post_image %>
+				<div><img id="post_img_prev" src="#" class='hidden' ></div>
+				<%= f.attachment_field :post_image, id:'post_img' %>
 			</div>
 		</div>
 
 		<div class="row post-title">
 			<div class="col-md-12">
 				<%= f.label :title, "タイトル" %>
-				<%= f.text_field :title, class:"form" %>
-			</div>
-		</div>
-
-		<div class="row select-category">
-			<div class="col-md-12">
-				<%= f.label :category_ids, "カテゴリ選択" %>
-				<%= f.collection_check_boxes :category_ids, @categories, :id, :name, class:"form" %>
+				<%= f.text_field :title, class:"form-control" %>
 			</div>
 		</div>
 
 		<div class="row post-text">
 			<div class="col-md-12">
 				<%= f.label :text, "説明文" %>
-				<%= f.text_area :text, class:"form" %>
+				<%= f.text_area :text, class:"form-control" %>
 			</div>
 		</div>
 
 		<div class="row">
-			<div class="col-md-12">
-				<%= f.submit "保存", class:"form" %>
+			<div class="col-md-offset-9 col-md-2">
+				<%= f.submit "投稿", class:"form btn-post" %>
 			</div>
 		</div>
 

@@ -16,11 +16,14 @@ Rails.application.routes.draw do
   get 'posts/top'
   get 'posts/about'
   get 'posts/hashtag'
-  post 'posts/confirm'
+  get 'posts/search_result'
   resources :posts
 
 # Albumsコントローラルーティング
   resources :albums, only: [:index, :show, :create, :destroy]
+
+# Favoritesコントローラルーティング
+  resources :favorites, only: [:create, :destroy]
 
 # Roomsコントローラルーティング
   resources :rooms, only: [:index, :show, :create, :destroy]

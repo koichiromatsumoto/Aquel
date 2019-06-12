@@ -18,14 +18,21 @@
           <div class="row">
 
             <!-- ロゴ -->
-          <div class="col-xs-2 navbar-logo">
+          <div class="col-md-2 navbar-logo">
             <%= link_to root_path, class: "navbar-logo-box" do %>
               <%= image_tag "logo.png", class:"logo", alt:"ロゴマーク" %>
             <% end %>
           </div>
 
+          <div class="col-md-6 navbar-search search">
+            <%= search_form_for @search, url: posts_search_result_path, class:"form-inline" do |f| %>
+              <%= f.search_field :title_or_text_or_hashtags_name_cont, class:"form-control field", placeholder:"検索ワードを入力してください" %>
+              <span class="input-group-btn"><%= button_tag sanitize('<i class="glyphicon glyphicon-search"></i>'), :type => "submit",:class =>"btn  btn-success search-btn" %></span>
+            <% end %>
+          </div>
+
           <!-- 右側リンク -->
-          <div class="col-xs-10 navbar-item">
+          <div class="col-md-4 navbar-item">
 
             <% if user_signed_in? && current_user.admin == false %><!--ユーザがログインしたとき-->
 
@@ -41,10 +48,6 @@
                 <%= link_to rooms_path, class:"nav-menu-item" do%>
                   <div class="nav-item-box pull-right">
                   <i class="fas fa-comment-dots"></i> Talk</div>
-                <% end %>
-                <%= link_to posts_path, class:"nav-menu-item" do%>
-                  <div class="nav-item-box pull-right">
-                  <i class="fas fa-search"></i> Search</div>
                 <% end %>
               </div>
 
@@ -63,10 +66,6 @@
                     <div class="nav-item-box pull-right">
                     <i class="fas fa-comment-dots"></i> Talk</div>
                   <% end %>
-                  <%= link_to posts_path, class:"nav-menu-item" do%>
-                    <div class="nav-item-box pull-right">
-                    <i class="fas fa-search"></i> Search</div>
-                  <% end %>
                 </div>
 
             <% else %><!-- ゲストユーザのとき -->
@@ -83,10 +82,6 @@
                 <%= link_to rooms_path, class:"nav-menu-item" do%>
                   <div class="nav-item-box pull-right">
                   <i class="fas fa-comment-dots"></i> Talk</div>
-                <% end %>
-                <%= link_to posts_path, class:"nav-menu-item" do%>
-                  <div class="nav-item-box pull-right">
-                  <i class="fas fa-search"></i> Search</div>
                 <% end %>
               </div>
 
