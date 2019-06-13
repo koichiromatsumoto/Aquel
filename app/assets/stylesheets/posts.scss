@@ -145,6 +145,11 @@
 	font-size: 20px;
 }
 
+#album-index.modal-text {
+    overflow-y: auto;
+    max-height: 70%;
+}
+
 // 投稿編集ページ
 
 .post-edit-img{

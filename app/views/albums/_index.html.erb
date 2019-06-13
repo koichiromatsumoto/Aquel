@@ -1,0 +1,20 @@
+
+<div id="album-index" class="modal-text">
+	<p class="pull-right"><a class="user-show-close" id="modal-close"><i class="fas fa-times"></i></a></p>
+	<div class="container-fluid modal-box">
+		<div class="row">
+			<div class="col-md-5">
+				<%= form_for(@album, remote: true) do |f| %>
+					<h3>アルバム作成</h3>
+					<%= f.label :name, "タイトル" %>
+					<%= f.text_field :name, autofocus: true, id:"album_text" %>
+					<%= f.submit "作成" %>
+				<% end %>
+			</div>
+
+		    <div class="col-md-7" id="albums">
+		    	<%= render "albums/create" %>
+		    </div>
+		</div>
+	</div>
+</div>

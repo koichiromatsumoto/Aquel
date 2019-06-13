@@ -18,81 +18,59 @@
 
 // ユーザ情報詳細画面
 $(function(){
-    // 「.modal-open」をクリック
-    $('#modal-open').click(function(){
-        // オーバーレイ用の要素を追加
-        $('body').append('<div class="js-modal-overlay"></div>');
-        // オーバーレイをフェードイン
-        $('.js-modal-overlay').fadeIn('slow');
+  $('#modal-open').click(function(){
 
-        // モーダルコンテンツのIDを取得
-        var modal = '#' + $(this).attr('data-target');
-        // モーダルコンテンツの表示位置を設定
-        modalResize();
-         // モーダルコンテンツフェードイン
-        $(modal).fadeIn('slow');
+    $('body').append('<div class="js-modal-overlay"></div>');
+    $('.js-modal-overlay').fadeIn('slow');
+    var modal = '#' + $(this).attr('data-target');
+    modalResize();
+    $(modal).fadeIn('slow');
 
-        // 「.modal-overlay」あるいは「.modal-close」をクリック
-        $('.js-modal-overlay, #modal-close').off().click(function(){
-            // モーダルコンテンツとオーバーレイをフェードアウト
-            $('.modal-text').fadeOut('slow');
-            $('.js-modal-overlay').fadeOut('slow',function(){
-                // オーバーレイを削除
-                $('.js-modal-overlay').remove();
-            });
-        });
-
-        // リサイズしたら表示位置を再取得
-        $(window).on('resize', function(){
-            modalResize();
-        });
-
-        // モーダルコンテンツの表示位置を設定する関数
-        function modalResize(){
-            // ウィンドウの横幅、高さを取得
-            var w = $(window).width();
-            var h = $(window).height();
-
-            // モーダルコンテンツの表示位置を取得
-            var x = (w - $(modal).outerWidth(true)) / 2;
-            var y = (h - $(modal).outerHeight(true)) / 2;
-
-            // モーダルコンテンツの表示位置を設定
-            $(modal).css({'left': x + 'px','top': y + 'px'});
-        }
-
-        // .modal_switchを押すとモーダルを切り替える
-        $('.modal-switch').click(function(){
-
-          // 押された.modal_switchの親要素の.modal_boxをフェードアウトさせる
-          $(this).parents('.modal-text').fadeOut();
-
-          // 押された.modal_switchのdata-targetの内容をIDにしてmodalに代入
-          var modal = '#' + $(this).attr('data-target');
-
-          // モーダルをウィンドウの中央に配置する
-          function modalResize(){
-              var w = $(window).width();
-              var h = $(window).height();
-
-              var x = (w - $(modal).outerWidth(true)) / 2;
-              var y = (h - $(modal).outerHeight(true)) / 2;
-
-              $(modal).css({'left': x + 'px','top': y + 'px'});
-          }
-
-          // modalResizeを実行
-          modalResize();
-
-          $(modal).fadeIn();
-
-          // ウィンドウがリサイズされたらモーダルの位置を再計算する
-          $(window).on('resize', function(){
-              modalResize();
-          });
-        });
-
+    $('.js-modal-overlay, #modal-close').off().click(function(){
+      $('.modal-text').fadeOut('slow');
+      $('.js-modal-overlay').fadeOut('slow',function(){
+        $('.js-modal-overlay').remove();
+      });
     });
+
+    $(window).on('resize', function(){
+      modalResize();
+    });
+
+    function modalResize(){
+      var w = $(window).width();
+      var h = $(window).height();
+
+      var x = (w - $(modal).outerWidth(true)) / 2;
+      var y = (h - $(modal).outerHeight(true)) / 2;
+
+      $(modal).css({'left': x + 'px','top': y + 'px'});
+    }
+
+    $('.modal-switch').click(function(){
+
+      $(this).parents('.modal-text').fadeOut();
+      var modal = '#' + $(this).attr('data-target');
+
+      function modalResize(){
+          var w = $(window).width();
+          var h = $(window).height();
+
+          var x = (w - $(modal).outerWidth(true)) / 2;
+          var y = (h - $(modal).outerHeight(true)) / 2;
+
+          $(modal).css({'left': x + 'px','top': y + 'px'});
+      }
+
+      modalResize();
+      $(modal).fadeIn();
+
+      $(window).on('resize', function(){
+          modalResize();
+      });
+    });
+
+  });
 });
 
 // ユーザ編集画面のイメージプレビュー

@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   get 'posts/about'
   get 'posts/hashtag'
   get 'posts/search_result'
+  post 'posts/album' => 'posts#album_in', as: 'posts_album_in'
+  delete 'posts/album' => 'posts#album_out', as: 'posts_album_out'
   resources :posts
 
 # Albumsコントローラルーティング
