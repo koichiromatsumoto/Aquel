@@ -113,8 +113,12 @@ $(function() {
 
   $(".select-profile-image").change(function(){
     $('#user_img_prev').removeClass('hidden');
-    $('.modal-img-user').remove();
+    $('.modal-img-user').hide();
     readURL(this);
+    $('.js-modal-overlay, #modal-close').click(function(){
+      $('#user_img_prev').addClass('hidden');
+      $('.modal-img-user').show();
+    });
   });
 });
 

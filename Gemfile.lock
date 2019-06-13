@@ -53,6 +53,9 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.6.0)
       public_suffix (>= 2.0.2, < 4.0)
+    after_commit_action (1.1.0)
+      activerecord (>= 3.0.0)
+      activesupport (>= 3.0.0)
     archive-zip (0.12.0)
       io-like (~> 0.3.0)
     arel (9.0.0)
@@ -89,6 +92,10 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.5)
+    counter_culture (1.12.0)
+      activerecord (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      after_commit_action (~> 1.0)
     crass (1.0.4)
     devise (4.6.2)
       bcrypt (~> 3.0)
@@ -267,6 +274,7 @@ DEPENDENCIES
   capybara (>= 2.15)
   chromedriver-helper
   coffee-rails (~> 4.2)
+  counter_culture (~> 1.8)
   devise
   jbuilder (~> 2.5)
   jquery-rails
