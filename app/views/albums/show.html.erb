@@ -1,0 +1,10 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-offset-2 col-md-8">
+			<% @album.posts.map do |post| %>
+				<%= attachment_image_tag post, :post_image, :fill, 300, 300, format:"jpg", fallback:"no_image.jpg", size:"300x300" %>
+				<%= link_to "削除", posts_album_out_path(@album.id), method: :delete, class:"btn" %>
+			<% end %>
+		</div>
+	</div>
+</div>

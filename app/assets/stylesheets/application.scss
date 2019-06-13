@@ -161,3 +161,16 @@ body {
 	color: #00ffff;
 }
 
+// モーダル
+.modal-text {
+    position: fixed;
+    display: none;
+    z-index: 30;
+    width: 50%;
+    margin: 0;
+    padding: 10px 20px;
+    border: 2px solid #aaa;
+    background: #fff;
+    color: #000;
+}
+
