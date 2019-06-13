@@ -1,5 +1,5 @@
 <div class="container post">
-    <div class="post-show-box">
+    <div class="post-show-box" id="post-<%= @post.id %>" data-micropost-id="<%= @post.id %>">
 
     	<div class="row post-img">
 			<div class="col-md-offset-2 col-md-8">
@@ -10,7 +10,7 @@
 		<div class="row post-menu">
 			<div class="col-md-offset-6 col-md-6">
 				<%= @post.user.name %>
-				<%= @post.created_at %>
+				<%= render "favorites/favorite" %>
 			</div>
 		</div>
 

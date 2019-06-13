@@ -74,5 +74,7 @@ gem 'jquery-rails'
 gem 'ransack'
 # cssフレームワーク
 gem 'bootstrap-sass', '~> 3.3.6'
+# いいねカウント用
+gem 'counter_culture', '~> 1.8'
 
 
