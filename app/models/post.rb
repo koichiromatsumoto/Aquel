@@ -24,11 +24,4 @@ class Post < ApplicationRecord
     iine_users.include?(user)
   end
 
-  def album_in(album)
-    post_albums.create(album_id: album.id)
-  end
-
-  def album_out(album)
-    post_albums.find_by(album_id: album.id).destroy
-  end
 end

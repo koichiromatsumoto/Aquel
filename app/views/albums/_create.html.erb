@@ -1,8 +1,8 @@
 
 
-<% current_user.albums.each do |album| %>
+<% current_user.albums.order(created_at: :desc).each do |album| %>
 	<%= album.name %>
 	<%= attachment_image_tag album.posts.last, :post_image, :fill, 100, 100, format:"jpg", fallback:"no_image.jpg", size:"100x100" %>
-	<p>計 <%= album.posts.count %> 枚</p>
-	<%= link_to "このアルバムに追加", posts_album_in_path(album.id), method: :post, class:"btn" %>
+	<h4>計 <%= album.posts.count %> 枚</h4>
+	<%= link_to "このアルバムに追加", album_posts_album_in_path(album, @post.id), method: :post, class:"btn" %>
 <% end %>

@@ -34,8 +34,7 @@ class PostsController < ApplicationController
     respond_to do |format|
       format.html
       format.js
-      end
-    session[:post_id] = @post.id
+    end
   end
 
   def edit
@@ -49,20 +48,23 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    post = Post.find(params[:id])
+    post.destroy
+    redirect_to posts_path
   end
 
   def album_in
-    @post = Post.find(session[:post_id])
-    @album = Album.find(params[:id])
-    @post.album_in(@album)
+    @album = Album.find(params[:album_id])
+    @post = Post.find(params[:id])
+    @postalbum = PostAlbum.create(album_id: @album.id, post_id: @post.id)
     redirect_to album_path(@album.id)
-    session[:post_id] = nil
   end
 
   def album_out
-    @post = PostAlbum.find(params[:id]).post
-    @album = Album.find(params[:id])
-    @post.album_out(@album)
+    @album = Album.find(params[:album_id])
+    @post = Post.find(params[:id])
+    @postalbum = PostAlbum.find_by(album_id: @album.id, post_id: @post.id)
+    @postalbum.destroy
     redirect_to album_path(@album.id)
   end
 

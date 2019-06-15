@@ -40,7 +40,7 @@ body {
 }
 
 /*ヘッダー*/
-.navbar{
+header .navbar{
 	background-color: rgba(0,0,0,0.7);
 }
 
@@ -144,6 +144,10 @@ body {
 }
 
 /*フッター*/
+footer .navbar{
+	background-color: rgba(0,0,0,0.7);
+}
+
 .footer-item{
 	height: 50px;
 	line-height: 50px;
