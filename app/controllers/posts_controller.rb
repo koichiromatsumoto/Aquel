@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!, only:[:new, :create, :edit, :update, :destroy, :album_in, :album_out, :hashtag]
+
 
   def new
     @post = Post.new
@@ -17,9 +19,7 @@ class PostsController < ApplicationController
   end
 
   def index
-    post_favorites_count = Post.joins(:favorites).group('post_id').count
-    @late_posts = Post.all.order(created_at: :desc)
-    @trend_posts = Post.all.order('post_favorites_count' => 'DESC')
+    @posts = Post.all
   end
 
   def search_result
@@ -43,29 +43,46 @@ class PostsController < ApplicationController
 
   def update
     post = Post.find(params[:id])
-    post.update(post_params)
-    redirect_to post_path(post.id)
+    if post.user = current_user
+      post.update(post_params)
+      redirect_to post_path(post.id)
+    else
+      render :show
+    end
   end
 
   def destroy
     post = Post.find(params[:id])
-    post.destroy
-    redirect_to posts_path
+    if post.user = current_user
+      post.destroy
+      redirect_to posts_path
+    else
+      render :show
+    end
   end
 
   def album_in
-    @album = Album.find(params[:album_id])
     @post = Post.find(params[:id])
-    @postalbum = PostAlbum.create(album_id: @album.id, post_id: @post.id)
-    redirect_to album_path(@album.id)
+    @album = Album.find(params[:album_id])
+
+    if @album.user = current_user
+      @postalbum = PostAlbum.create(album_id: @album.id, post_id: @post.id)
+      redirect_to album_path(@album.id)
+    else
+      render :show, id: params[:id]
+    end
   end
 
   def album_out
     @album = Album.find(params[:album_id])
     @post = Post.find(params[:id])
-    @postalbum = PostAlbum.find_by(album_id: @album.id, post_id: @post.id)
-    @postalbum.destroy
-    redirect_to album_path(@album.id)
+    if @album.user = current_user
+      @postalbum = PostAlbum.find_by(album_id: @album.id, post_id: @post.id)
+      @postalbum.destroy
+      redirect_to album_path(@album.id)
+    else
+      render 'albums/show', id: params[:album_id]
+    end
   end
 
   def hashtag

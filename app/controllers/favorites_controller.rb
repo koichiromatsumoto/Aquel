@@ -1,26 +1,18 @@
 class FavoritesController < ApplicationController
-
+before_action :set_variables
   def create
-    @post = Post.find(params[:post_id])
-    unless @post.like?(current_user)
-      @post.like(current_user)
-      @post.reload
-      respond_to do |format|
-        format.html { redirect_to request.referrer || root_url }
-        format.js
-      end
-    end
+    favorite = current_user.favorites.build(post_id: params[:post_id])
+    favorite.save
   end
 
   def destroy
-    @post = Favorite.find(params[:id]).post
-    if @post.like?(current_user)
-      @post.unlike(current_user)
-      @post.reload
-      respond_to do |format|
-        format.html { redirect_to request.referrer || root_url }
-        format.js
-      end
-    end
+    favorite = Favorite.find_by(post_id: params[:post_id], user_id: current_user.id)
+    favorite.destroy
+  end
+  private
+
+  def set_variables
+    @post = Post.find(params[:post_id])
+    @id_name = "#likes_buttons_#{@post.id}"
   end
 end

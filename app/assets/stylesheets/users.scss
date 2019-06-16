@@ -3,8 +3,21 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 // ログイン、新規登録ページ
-.form{
+.signup h2{
+	margin-top: 50px;
+	text-align: center;
+}
+
+.signin h2{
+	margin-top: 50px;
+	text-align: center;
+}
+
+.form-box{
+	background: #fff;
 	color: #000;
+	padding: 30px;
+	margin-top: 20px;
 }
 
 // マイページ
@@ -30,7 +43,7 @@
 
 .mypage-nav{
 	width: 90%;
-	margin: 0 auto;
+	margin: 60px auto;
 }
 
 .mypage-nav .container-fluid{
@@ -42,9 +55,42 @@
 }
 
 .mypage-nav li{
-	width: 25%;
+	width: 20%;
 	font-size: 18px;
 	text-align: center;
+}
+
+#tab-menu .active {
+  background-color: orange;
+  border-bottom: none;
+  color: #fff;
+  border-radius: 4px;
+}
+
+.timeline .timeline-box{
+	background: #fff;
+	width: 100%;
+	padding-top: 20px;
+	padding-bottom: 30px;
+	border-radius: 4px;
+}
+
+.timeline h4{
+	text-align: center;
+	color: #000;
+}
+
+.timeline-post{
+	width: 90%;
+	margin: 0 auto;
+}
+
+.timeline-post-image{
+	margin-top: 15px;
+	width: 100%;
+	height: auto;
+	position: relative;
+	display: block;
 }
 
 // ユーザ詳細（モーダル）
@@ -99,7 +145,7 @@
 	margin-bottom: 30px;
 }
 
-.btn-edituser {
+.btn-success-user {
 	margin-top: 20px;
 	margin-left: 10px;
 	display: inline-block;
@@ -112,13 +158,13 @@
 	cursor: pointer;
 }
 
-.btn-edituser:hover {
+.btn-success-user:hover {
 	background: #67c5ff;
 	color: white;
 	text-decoration: none;
 }
 
-.btn-edituser:action {
+.btn-success-user:action {
 	text-decoration: none;
 }
 

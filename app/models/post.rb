@@ -11,17 +11,8 @@ class Post < ApplicationRecord
   has_many :post_albums
   has_many :albums, through: :post_albums
 
-
-  def like(user)
-    favorites.create(user_id: user.id)
-  end
-
-  def unlike(user)
-    favorites.find_by(user_id: user.id).destroy
-  end
-
-  def like?(user)
-    iine_users.include?(user)
+  def liked_by?(user)
+    favorites.where(user_id: user.id).exists?
   end
 
 end

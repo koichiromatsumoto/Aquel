@@ -1,6 +1,5 @@
 class AlbumsController < ApplicationController
   def index
-    @post = Post.find(params[:id])
   	@albums = Album.all.order(created_at: :desc)
   	@album = Album.new
 		respond_to do |format|

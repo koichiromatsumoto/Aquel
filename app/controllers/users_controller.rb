@@ -1,9 +1,14 @@
 class UsersController < ApplicationController
+  before_action :correct_user, only:[:edit, :update, :withdraw]
+  before_action :require_admin, only:[:index, :admin]
+
+
   def show
     @user = User.find(params[:id])
-  end
-
-  def mypage
+    @current_user = User.find(current_user.id)
+    @posts_all = Post.joins(:user)
+    @follow_users = @current_user.following.all
+    @timeline_posts = Post.where(user_id: @follow_users).order(created_at: :desc)
   end
 
   def edit
@@ -19,9 +24,6 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
-  end
-
-  def withdraw_view
   end
 
   def withdraw
@@ -45,5 +47,26 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :profile_image, :introduction, :password, :password_confirmation, :email, :status, :admin)
+  end
+
+  def correct_user
+    if user_signed_in?
+      user = User.find(params[:id])
+      if user != current_user && current_user.admin == false
+        redirect_to user_path(current_user.id)
+      end
+    else
+      redirect_to root_path
+    end
+  end
+
+  def require_admin
+    if user_signed_in?
+      if current_user.admin == false
+        redirect_to user_path(current_user.id)
+      end
+    else
+      redirect_to root_path
+    end
   end
 end

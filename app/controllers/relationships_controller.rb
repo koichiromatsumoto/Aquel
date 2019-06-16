@@ -5,7 +5,7 @@ class RelationshipsController < ApplicationController
     user = User.find(params[:followed_id])
     if current_user.follow(user)
       flash[:success] = 'ユーザーをフォローしました'
-      redirect_to user_path(current_user.id)
+      redirect_to user_path(user.id)
     else
       flash.now[:alert] = 'ユーザーのフォローに失敗しました'
       redirect_to user_path(user.id)
@@ -16,7 +16,7 @@ class RelationshipsController < ApplicationController
     user = Relationship.find(params[:id]).followed
     if current_user.unfollow(user)
       flash[:success] = 'ユーザーのフォローを解除しました'
-      redirect_to user_path(current_user.id)
+      redirect_to user_path(user.id)
     else
       flash.now[:alert] = 'ユーザーのフォロー解除に失敗しました'
       redirect_to user_path(user.id)

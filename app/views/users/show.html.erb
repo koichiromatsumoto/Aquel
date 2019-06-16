@@ -16,39 +16,49 @@
 	<div class="row">
 		<div class="col-md-offset-1 col-md-3">
 			<div class="follow">
-				<% unless current_user == @user %>
-				  <% if current_user.following?(@user) %>
-				    <%= form_for(current_user.active_relationships.find_by(followed_id: @user.id), html: { method: :delete }) do |f| %>
-				      <%= f.submit 'Unfollow', class: 'btn btn-danger btn-block' %>
-				    <% end %>
-				  <% else %>
-				    <%= form_for(current_user.active_relationships.build) do |f| %>
-				      <%= hidden_field_tag :followed_id, @user.id %>
-				      <%= f.submit 'Follow', class: 'btn btn-primary btn-block' %>
-				    <% end %>
-				  <% end %>
-				<% end %>
-				<% @user.following.each do |following_user| %>
-			      フォロー<%= following_user.name %>
-			    <% end %>
-			    <% @user.followers.each do |following_user| %>
-			      フォロワー<%= following_user.name %>
-			    <% end %>
+				<%= render 'users/follow' %>
+			    <a href="#tab2"><h4>フォロー <%= @user.following.count %></h4></a>
+			    <a href="#tab3"><h4>フォロワー <%= @user.followers.count %></h4></a>
 			</div>
 			<div class="timeline">
+				<div class="timeline-box">
+					<h4>タイムライン</h4>
+					<% if @timeline_posts.exists? %>
+						<% @timeline_posts.first(5).each do |timeline_post| %>
+						    <div class="timeline-post">
+						    	<%= link_to post_path(timeline_post.id) do %><%= attachment_image_tag timeline_post, :post_image, format:"jpg", fallback:"no_image.jpg", class:"timeline-post-image" %><% end %>
+						    </div>
+						<% end %>
+					<% else %>
+					    <p>タイムラインはありません</p>
+					<% end %>
+				</div>
 			</div>
 		</div>
-		<div class="col-md-7">
+		<div class="col-md-8">
 			<nav class="navbar navbar-default bg-dark mypage-nav">
 				<div class="container-fluid">
-					<ul class="nav navbar-nav">
-						<li class="nav-item"><a href="#">フォロー</a></li>
-						<li class="nav-item"><a href="#">フォロワー</a></li>
-						<li class="nav-item"><a href="#">いいね</a></li>
-						<li class="nav-item"><a href="#">アルバム</a></li>
+					<ul class="nav navbar-nav" id="tab-menu">
+						<li class="nav-item"><a href="#tab1" class="active">投稿一覧</a></li>
+						<li class="nav-item tab2"><a href="#tab2">フォロー</a></li>
+						<li class="nav-item tab3"><a href="#tab3">フォロワー</a></li>
+						<li class="nav-item"><a href="#tab4">いいね</a></li>
+						<li class="nav-item"><a href="#tab5">アルバム</a></li>
 					</ul>
 				</div>
 			</nav>
+			<div id="tab-contents">
+	        	<div id="tab1" class="tab">
+	        		<%= render 'users/posts' %>
+	        	</div>
+	        	<div id="tab2" class="tab">
+	        		<%= render 'users/following' %>
+	        	</div>
+	        	<div id="tab3" class="tab">
+	        		<%= render 'users/followers' %>
+	        	</div>
+	        </div>
+
 		</div>
 	</div>
 

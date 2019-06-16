@@ -17,15 +17,15 @@ Rails.application.routes.draw do
   get 'posts/about'
   get 'posts/hashtag'
   get 'posts/search_result'
-  resources :posts
+  resources :posts do
+    resource :favorites, only: [:create, :destroy]
+  end
 
 # Albumsコントローラルーティング
   resources :albums, only: [:index, :show, :create, :destroy] do
     post 'posts/:id' => 'posts#album_in', as: 'posts_album_in'
     delete 'posts/:id' => 'posts#album_out', as: 'posts_album_out'
   end
-# Favoritesコントローラルーティング
-  resources :favorites, only: [:create, :destroy]
 
 # Roomsコントローラルーティング
   resources :rooms, only: [:index, :show, :create, :destroy]

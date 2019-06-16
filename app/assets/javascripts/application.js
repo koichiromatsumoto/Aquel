@@ -101,19 +101,21 @@ $(function() {
 });
 
 // 投稿一覧画面の新着orトレンド
+
 $(function(){
-    $('.late-posts').show();
-    $('.trend-posts').hide();
-
-    $('.late').click(function(){
-      $('.late-posts').show();
-      $('.trend-posts').hide();
-    });
-
-    $('.trend').click(function(){
-      $('.trend-posts').show();
-      $('.late-posts').hide();
-    });
+  $('#tab-contents .tab[id != "tab1"]').hide();
+  $('#tab-menu a, .follow a').on('click', function() {
+    $("#tab-contents .tab").hide();
+    $("#tab-menu .active").removeClass("active");
+    $(this).addClass("active");
+    if ($(this).attr("href") == ("#tab2")){
+      $(".tab2 a").addClass("active");
+    } else if($(this).attr("href") == ("#tab3")){
+      $(".tab3 a").addClass("active");
+    }
+    $($(this).attr("href")).show();
+    return false;
+  });
 });
 
 // 新規投稿ページのイメージプレビュー
