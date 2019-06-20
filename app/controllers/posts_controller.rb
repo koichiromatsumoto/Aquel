@@ -23,8 +23,7 @@ class PostsController < ApplicationController
   end
 
   def search_result
-    @search_late_posts = @search.result(distinct: true).order(created_at: :desc)
-    @search_trend_posts = @search.result(distinct: true).order('post_favorites_count' => 'DESC')
+    @search_posts = @search.result(distinct: true).all
   end
 
   def show

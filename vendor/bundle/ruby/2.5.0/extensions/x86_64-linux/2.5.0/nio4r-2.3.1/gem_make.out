@@ -1,5 +1,5 @@
 current directory: /vagrant/Aquel/vendor/bundle/ruby/2.5.0/gems/nio4r-2.3.1/ext/nio4r
-/usr/bin/ruby2.5 -r ./siteconf20190603-5114-bo5u8b.rb extconf.rb
+/usr/bin/ruby2.5 -r ./siteconf20190617-24334-188e610.rb extconf.rb
 checking for unistd.h... yes
 checking for sys/select.h... yes
 checking for port_event_t in poll.h... no
@@ -11,9 +11,12 @@ creating Makefile
 
 current directory: /vagrant/Aquel/vendor/bundle/ruby/2.5.0/gems/nio4r-2.3.1/ext/nio4r
 make "DESTDIR=" clean
+make: Warning: File 'Makefile' has modification time 53 s in the future
+make: warning:  Clock skew detected.  Your build may be incomplete.
 
 current directory: /vagrant/Aquel/vendor/bundle/ruby/2.5.0/gems/nio4r-2.3.1/ext/nio4r
 make "DESTDIR="
+make: Warning: File 'Makefile' has modification time 53 s in the future
 compiling bytebuffer.c
 compiling monitor.c
 compiling nio4r_ext.c
@@ -67,7 +70,10 @@ selector.c:484:5: warning: ignoring return value of ‘write’, declared with a
      write(selector->wakeup_writer, "\0", 1);
      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 linking shared-object nio4r_ext.so
+make: warning:  Clock skew detected.  Your build may be incomplete.
 
 current directory: /vagrant/Aquel/vendor/bundle/ruby/2.5.0/gems/nio4r-2.3.1/ext/nio4r
 make "DESTDIR=" install
-/usr/bin/install -c -m 0755 nio4r_ext.so ./.gem.20190603-5114-1ytief1
+make: Warning: File 'Makefile' has modification time 51 s in the future
+/usr/bin/install -c -m 0755 nio4r_ext.so ./.gem.20190617-24334-byyty8
+make: warning:  Clock skew detected.  Your build may be incomplete.

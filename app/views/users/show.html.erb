@@ -1,7 +1,13 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-offset-1 col-md-3">
-			<%= attachment_image_tag @user, :profile_image, :fill, 150, 150, format: 'jpg', fallback: 'no_image.jpg', size:'150x150', class:"img-circle pull-right img-user", id:"modal-open", "data-target":"user-show" %>
+			<div class="user-profileimage">
+				<% if @user == current_user %>
+					<%= attachment_image_tag @user, :profile_image, format: 'jpg', fallback: 'no_image.jpg', class:"img-circle img-user", id:"modal-open", "data-target":"user-show" %>
+				<% else %>
+				    <%= attachment_image_tag @user, :profile_image, format: 'jpg', fallback: 'no_image.jpg', class:"img-circle img-user" %>
+				<% end %>
+		    </div>
 		</div>
 		<div class="col-md-7">
 			<div class="user-name">
@@ -16,24 +22,29 @@
 	<div class="row">
 		<div class="col-md-offset-1 col-md-3">
 			<div class="follow">
-				<%= render 'users/follow' %>
 			    <a href="#tab2"><h4>フォロー <%= @user.following.count %></h4></a>
 			    <a href="#tab3"><h4>フォロワー <%= @user.followers.count %></h4></a>
+			    <%= render 'users/follow' %>
 			</div>
-			<div class="timeline">
-				<div class="timeline-box">
-					<h4>タイムライン</h4>
-					<% if @timeline_posts.exists? %>
-						<% @timeline_posts.first(5).each do |timeline_post| %>
-						    <div class="timeline-post">
-						    	<%= link_to post_path(timeline_post.id) do %><%= attachment_image_tag timeline_post, :post_image, format:"jpg", fallback:"no_image.jpg", class:"timeline-post-image" %><% end %>
-						    </div>
+
+			<% if @user.id == current_user.id %>
+				<div class="timeline">
+					<div class="timeline-box">
+						<div class="timeline-heading">
+							<h4><i class="far fa-clipboard"></i> タイムライン</h4>
+						</div>
+						<% if @timeline_posts.exists? %>
+							<% @timeline_posts.first(5).each do |timeline_post| %>
+							    <div class="timeline-post">
+							    	<%= link_to post_path(timeline_post.id), data: {"turbolinks" => false} do %><%= attachment_image_tag timeline_post, :post_image, format:"jpg", fallback:"no_image.jpg", class:"timeline-post-image" %><% end %>
+							    </div>
+							<% end %>
+						<% else %>
+						    <p class="no-timeline">タイムラインはありません</p>
 						<% end %>
-					<% else %>
-					    <p>タイムラインはありません</p>
-					<% end %>
+					</div>
 				</div>
-			</div>
+			<% end %>
 		</div>
 		<div class="col-md-8">
 			<nav class="navbar navbar-default bg-dark mypage-nav">
@@ -56,6 +67,12 @@
 	        	</div>
 	        	<div id="tab3" class="tab">
 	        		<%= render 'users/followers' %>
+	        	</div>
+	        	<div id="tab4" class="tab">
+	        		<%= render 'users/favorites' %>
+	        	</div>
+	        	<div id="tab4" class="tab">
+	        		<%= render 'users/albums' %>
 	        	</div>
 	        </div>
 

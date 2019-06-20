@@ -1,36 +1,74 @@
 <div class="container post-index">
 
-	<div class="search-cont">
-	    <div class="row">
-			<div class="col-md-offset-10 col-md-1 post-order">
-				<div class="late">新着</div>
-			</div>
-			<div class="col-md-1 post-order">
-				<div class="trend">トレンド</div>
+    <div class="index-cont">
+		<div class="row">
+			<div class="col-md-offset-1 col-md-10">
+				<div class="search-word">
+					<h3>検索ワード：
+			            <% if params[:q].present? && params[:q][:title_or_text_or_hashtags_name_cont].present? %>
+						    <%= params[:q][:title_or_text_or_hashtags_name_cont] %>
+						<% else %>
+						    指定なし
+						<% end %>
+				    </h3>
+				</div>
+				<div class="post-order">
+					<ul id="tab-menu">
+						<a href="#tab1" class="active"><li>新着</li></a>
+						<a href="#tab2" class=""><li>トレンド</li></a>
+						<li></li>
+						<li></li>
+			        </ul>
+			    </div>
 			</div>
 		</div>
 
-		<div class="row index-box late-posts">
-			<% @search_late_posts.each do |post| %>
-			<div class="col-md-4 index-post-box">
-				<div class="post-img"><%= link_to post_path(post.id) do %><%= attachment_image_tag post, :post_image, :fill, 300, 300, format: 'jpg', fallback:'no_image.jpg', size:'300x300' %><% end %>
-				    <div class="post-title"><%= post.title %></div>
-				    <div class="post-user"><%= post.user.name %></div>
+        <% if @search_posts.exists? %>
+	        <div id="tab-contents">
+	        	<div id="tab1" class="tab">
+					<div class="row index-box late-posts">
+						<% @search_posts.order(created_at: :desc).each do |post| %>
+						  <div class="col-md-4 index-post-box">
+						    <div class="post-img"><%= link_to post_path(post.id), data: {"turbolinks" => false} do %><%= attachment_image_tag post, :post_image, :fill, 300, 300, format: 'jpg', fallback:'no_image.jpg', size:'300x300' %><% end %>
+								<div class="post-title"><%= post.title %></div>
+								<div class="post-user"><%= post.user.name %></div>
+								<div class="post-like">
+									<div id="likes_buttons_<%= post.id %>">
+								    	<%= render partial: 'favorites/favorite', locals: {post: post} %>
+								    </div>
+								</div>
+						    </div>
+						  </div>
+						<% end %>
+					</div>
 				</div>
-			</div>
-			<% end %>
-		</div>
 
-		<div class="row index-box trend-posts">
-			<% @search_trend_posts.each do |post| %>
-			<div class="col-md-4 index-post-box">
-				<div class="post-img"><%= link_to post_path(post.id) do %><%= attachment_image_tag post, :post_image, :fill, 300, 300, format: 'jpg', fallback:'no_image.jpg', size:'300x300' %><% end %>
-				    <div class="post-title"><%= post.title %></div>
-				    <div class="post-user"><%= post.user.name %></div>
+				<div id="tab2" class="tab">
+					<div class="row index-box trend-posts">
+						<% @search_posts.order("favorites_count" => :desc).each do |post| %>
+						<div class="col-md-4 index-post-box">
+							<div class="post-img"><%= link_to post_path(post.id), data: {"turbolinks" => false} do %><%= attachment_image_tag post, :post_image, :fill, 300, 300, format: 'jpg', fallback:'no_image.jpg', size:'300x300' %><% end %>
+							    <div class="post-title"><%= post.title %></div>
+							    <div class="post-user"><%= post.user.name %></div>
+							    <div class="post-like">
+							      	<div id="likes_buttons_<%= post.id %>">
+							            <%= render partial: 'favorites/favorite', locals: {post: post} %>
+							        </div>
+						      </div>
+							</div>
+						</div>
+						<% end %>
+					</div>
 				</div>
 			</div>
-			<% end %>
-		</div>
-    </div>
+		<% else %>
+		    <div class="row">
+		    	<div class="col-md-offset-1 col-md-10">
+		    		<h3 class="search-nothing">検索結果はありません</h3>
+		    	</div>
+		    </div>
+		<% end %>
+
+	</div>
 
 </div>

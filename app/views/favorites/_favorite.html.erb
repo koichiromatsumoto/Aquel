@@ -4,12 +4,12 @@
     <% if post.liked_by?(current_user) %><!-- カレントユーザにいいねされていたら -->
       <p><%=link_to post_favorites_path(post.id), method: :delete, remote: true do%><i class="fas fa-heart"><%= post.favorites.count %></i><% end %></p>
     <% else %><!-- カレントユーザにいいねされていなかったら -->
-      <p class="like"><%=link_to post_favorites_path(post.id), method: :post, remote: true do%><i class="far fa-heart"><%= post.favorites.count %></i><% end %></p>
+      <p class="like"><%=link_to post_favorites_path(post.id), method: :post, data: {"turbolinks" => false}, remote: true do%><i class="far fa-heart"><%= post.favorites.count %></i><% end %></p>
     <% end %>
 
   <% else %>
 
-    <p><i class="fas fa-heart"></i><%= post.favorites_count %></p>
+    <p><i class="fas fa-heart"></i><%= post.favorites.count %></p>
 
   <% end %>
 </div>

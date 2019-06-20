@@ -6,7 +6,6 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @current_user = User.find(current_user.id)
-    @posts_all = Post.joins(:user)
     @follow_users = @current_user.following.all
     @timeline_posts = Post.where(user_id: @follow_users).order(created_at: :desc)
   end

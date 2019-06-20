@@ -13,7 +13,7 @@
 		</div>
 		<% unless album.album_in?(@post) %>
 			<div style="display: inline-block;">
-				<h5><%= link_to "このアルバムに追加", album_posts_album_in_path(album, @post), method: :post, class:"btn btn-default" %></h5>
+				<h5><%= link_to "このアルバムに追加", album_posts_album_in_path(album, @post), method: :post, data: {"turbolinks" => false}, class:"btn btn-default" %></h5>
 			</div>
 		<% else %>
 		    <div style="display: inline-block;">

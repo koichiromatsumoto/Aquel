@@ -35,6 +35,8 @@ gem 'jbuilder', '~> 2.5'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
+#カウンターキャッシュ用
+gem 'counter_culture', '~> 1.8'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -74,7 +76,4 @@ gem 'jquery-rails'
 gem 'ransack'
 # cssフレームワーク
 gem 'bootstrap-sass', '~> 3.3.6'
-# いいねカウント用
-gem 'counter_culture', '~> 1.8'
-
 

@@ -23,21 +23,37 @@
 // マイページ
 .user-name{
     line-height: 30px;
-    padding-left: 30px;
-    font-size: 35px;
-    margin-top: 25px;
+    padding-left: 40px;
+    font-size: 45px;
+    margin-top: 35px;
 }
 
 .user-introduction{
-    margin-top: 25px;
     font-size: 18px;
+    width: 80%;
+    margin: 35px auto 0 auto;
+}
+
+.user-profileimage{
+	margin: 10px auto;
+	display: block;
+    height: 0;
+    max-width: 70%;
+    padding-bottom: 70%;
+    position: relative;
 }
 
 .img-user {
-    margin-top: 20px;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+    width: 100%;
+    height: 100%;
 }
 
-.img-user:hover {
+#modal-open:hover {
     cursor: pointer;
 }
 
@@ -67,12 +83,36 @@
   border-radius: 4px;
 }
 
+.follow a{
+	display: inline-block;
+}
+
+.list{
+	margin-bottom: 15px;
+	font-size: 18px;
+	color: #fff;
+	text-decoration: none;
+}
+
+.list:hover{
+    text-decoration: none;
+    color: orange;
+}
+
 .timeline .timeline-box{
+	margin-top: 20px;
 	background: #fff;
 	width: 100%;
-	padding-top: 20px;
 	padding-bottom: 30px;
 	border-radius: 4px;
+}
+
+.timeline .timeline-heading{
+	background-color: #e0ffff;
+	border-top-right-radius: 4px;
+	border-top-left-radius: 4px;
+	padding-top: 10px;
+	padding-bottom: 10px;
 }
 
 .timeline h4{
@@ -91,6 +131,23 @@
 	height: auto;
 	position: relative;
 	display: block;
+}
+
+.timeline .no-timeline{
+	color: #000;
+	text-align: center;
+    padding-top: 30px;
+}
+
+.user_posts .post{
+	width: 93%;
+	height: auto;
+	margin: 20px auto;
+}
+
+.user_posts .post .post-img{
+	width: 100%;
+	height: auto;
 }
 
 // ユーザ詳細（モーダル）
