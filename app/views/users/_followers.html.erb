@@ -1,0 +1,19 @@
+
+<div class="container-fluid followers">
+	<div class="row">
+		<div class="col-md-offset-1 col-md-7">
+			<% if @user.followers.exists? %>
+				<% @user.followers.each do |follower| %>
+				    <%= link_to user_path(follower.id), data: {"turbolinks" => false} do%>
+					    <div class="list">
+							<%= attachment_image_tag follower, :profile_image, :fill, 80, 80, format:"jpg", fallback:"no_image.jpg", size:"80x80", class:"img-circle" %>
+							<%= follower.name %>
+						</div>
+					<% end %>
+				<% end %>
+		    <% else %>
+		        <h4>ユーザにフォローされていません</h4>
+		    <% end %>
+		</div>
+	</div>
+</div>

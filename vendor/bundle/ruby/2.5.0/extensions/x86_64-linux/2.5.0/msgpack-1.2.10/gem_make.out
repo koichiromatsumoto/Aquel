@@ -1,5 +1,5 @@
 current directory: /vagrant/Aquel/vendor/bundle/ruby/2.5.0/gems/msgpack-1.2.10/ext/msgpack
-/usr/bin/ruby2.5 -r ./siteconf20190603-5114-1qlcbyj.rb extconf.rb
+/usr/bin/ruby2.5 -r ./siteconf20190617-24334-ma10rh.rb extconf.rb
 checking for ruby/st.h... yes
 checking for st.h... yes
 checking for rb_str_replace() in ruby.h... yes
@@ -13,9 +13,12 @@ creating Makefile
 
 current directory: /vagrant/Aquel/vendor/bundle/ruby/2.5.0/gems/msgpack-1.2.10/ext/msgpack
 make "DESTDIR=" clean
+make: Warning: File 'Makefile' has modification time 53 s in the future
+make: warning:  Clock skew detected.  Your build may be incomplete.
 
 current directory: /vagrant/Aquel/vendor/bundle/ruby/2.5.0/gems/msgpack-1.2.10/ext/msgpack
 make "DESTDIR="
+make: Warning: File 'Makefile' has modification time 53 s in the future
 compiling buffer.c
 compiling buffer_class.c
 compiling extension_value_class.c
@@ -41,9 +44,10 @@ unpacker_class.c:219:14: warning: ‘Unpacker_peek_next_type’ defined but not 
               ^~~~~~~~~~~~~~~~~~~~~~~
 compiling unpacker_ext_registry.c
 linking shared-object msgpack/msgpack.so
+make: warning:  Clock skew detected.  Your build may be incomplete.
 
 current directory: /vagrant/Aquel/vendor/bundle/ruby/2.5.0/gems/msgpack-1.2.10/ext/msgpack
 make "DESTDIR=" install
-make: Warning: File 'msgpack.so' has modification time 0.31 s in the future
-/usr/bin/install -c -m 0755 msgpack.so ./.gem.20190603-5114-wgz7ik/msgpack
+make: Warning: File 'Makefile' has modification time 49 s in the future
+/usr/bin/install -c -m 0755 msgpack.so ./.gem.20190617-24334-1mtmbci/msgpack
 make: warning:  Clock skew detected.  Your build may be incomplete.

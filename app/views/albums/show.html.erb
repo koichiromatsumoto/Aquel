@@ -3,8 +3,12 @@
 		<div class="col-md-offset-2 col-md-8">
 			<% @album.posts.map do |post| %>
 				<%= attachment_image_tag post, :post_image, :fill, 300, 300, format:"jpg", fallback:"no_image.jpg", size:"300x300" %>
-				<%= link_to "削除", posts_album_out_path(@album.id), method: :delete, class:"btn" %>
+				<%= link_to "削除", album_posts_album_out_path(@album, post), method: :delete, data: {"turbolinks" => false}, class:"btn" %>
 			<% end %>
+		</div>
+		<div class="col-md-6">
+			<%= link_to "アルバムを削除", album_path(@album.id), method: :delete, data: {"turbolinks" => false}, class:"btn btn-default" %>
 		</div>
 	</div>
 </div>
+

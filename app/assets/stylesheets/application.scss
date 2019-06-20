@@ -34,13 +34,17 @@ body {
 }
 
 @keyframes gradationTest {
-0% { background-color: #1CB5E0; }
+0% { background-color: #0000cd; }
 50% { background-color: #000046; }
-100% { background-color: #1CB5E0; }
+100% { background-color: #0000cd; }
+}
+
+.form-control{
+	color: #000;
 }
 
 /*ヘッダー*/
-.navbar{
+header .navbar{
 	background-color: rgba(0,0,0,0.7);
 }
 
@@ -144,6 +148,10 @@ body {
 }
 
 /*フッター*/
+footer .navbar{
+	background-color: rgba(0,0,0,0.7);
+}
+
 .footer-item{
 	height: 50px;
 	line-height: 50px;

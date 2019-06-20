@@ -1,1 +1,2 @@
-$("#post-<%= @post.id %> .like").html("<%= escape_javascript(render "favorites/favorite" ) %>");
+$('<%= @id_name %>').html("<%= j(render partial: 'favorites/favorite', locals: {post: @post}) %>");
+

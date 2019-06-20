@@ -1,2 +1,39 @@
-<h1>Rooms#show</h1>
-<p>Find me in app/views/rooms/show.html.erb</p>
+<div class="container talkroom-show">
+	<div class="row">
+		<div class="col-md-offset-3 col-md-6">
+			<h1 class="heading"><%= @room.name %></h1>
+		</div>
+		<div class="col-md-3 owner">
+			<%= link_to user_path(@room.user.id), data: {"turbolinks" => false}, class:"owner-user" do%>
+				<%= attachment_image_tag @room.user, :profile_image, :fill, 70, 70, format:"jpg", fallback:"no_image.jpg", size:"70x70", class:"img-circle" %>
+				<%= @room.user.name %>
+			<% end %>
+		</div>
+		<div class="col-md-offset-1 col-md-10">
+			<div  class="message-box">
+				<div id="messages" data-room_id="<%= @room.id %>">
+					<%= render @messages %>
+				</div>
+			</div>
+			<div class="field">
+				<%= label nil, nil, 'Say something:' %>
+				<%= text_field nil, nil, 'data-behavior': 'room_speaker', autofocus: true, class:"form-control" %>
+			</div>
+			<%= link_to '戻る', :back, data: {"turbolinks" => false} %>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -17,21 +17,24 @@ Rails.application.routes.draw do
   get 'posts/about'
   get 'posts/hashtag'
   get 'posts/search_result'
-  post 'posts/album' => 'posts#album_in', as: 'posts_album_in'
-  delete 'posts/album' => 'posts#album_out', as: 'posts_album_out'
-  resources :posts
+  resources :posts do
+    resource :favorites, only: [:create, :destroy]
+  end
 
 # Albumsコントローラルーティング
-  resources :albums, only: [:index, :show, :create, :destroy]
-
-# Favoritesコントローラルーティング
-  resources :favorites, only: [:create, :destroy]
+  resources :albums, only: [:index, :show, :create, :destroy] do
+    post 'posts/:id' => 'posts#album_in', as: 'posts_album_in'
+    delete 'posts/:id' => 'posts#album_out', as: 'posts_album_out'
+  end
 
 # Roomsコントローラルーティング
   resources :rooms, only: [:index, :show, :create, :destroy]
 
 # Contactsコントローラルーティング
   resources :contacts, only: [:index, :show, :create, :destroy]
+
+# Relationshipsコントローラルーティング
+  resources :relationships, only: [:create, :destroy]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

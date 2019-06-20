@@ -37,15 +37,15 @@
             <% if user_signed_in? && current_user.admin == false %><!--ユーザがログインしたとき-->
 
               <div class="nav navbar-nav pull-right nav-menu">
-                <%= link_to destroy_user_session_path, method: :delete, class:"nav-menu-item" do%>
+                <%= link_to destroy_user_session_path, method: :delete, data: {"turbolinks" => false}, class:"nav-menu-item" do%>
                   <div class="nav-item-box pull-right">
                   <i class="fas fa-sign-out-alt"></i> Log out</div>
                 <% end %>
-                <%= link_to user_path(current_user.id), class:"nav-menu-item" do%>
+                <%= link_to user_path(current_user.id), data: {"turbolinks" => false}, class:"nav-menu-item" do%>
                   <div class="nav-item-box pull-right">
                   <i class="fas fa-user-alt"></i> My page</div>
                 <% end %>
-                <%= link_to rooms_path, class:"nav-menu-item" do%>
+                <%= link_to rooms_path, data: {"turbolinks" => false}, class:"nav-menu-item" do%>
                   <div class="nav-item-box pull-right">
                   <i class="fas fa-comment-dots"></i> Talk</div>
                 <% end %>
@@ -54,15 +54,15 @@
             <% elsif user_signed_in? && current_user.admin == true %> <!--adminのとき-->
 
                 <div class="nav navbar-nav pull-right nav-menu">
-                  <%= link_to destroy_user_session_path, method: :delete, class:"nav-menu-item" do%>
+                  <%= link_to destroy_user_session_path, method: :delete, data: {"turbolinks" => false}, class:"nav-menu-item" do%>
                     <div class="nav-item-box pull-right">
                     <i class="fas fa-sign-out-alt"></i> Log out</div>
                   <% end %>
-                  <%= link_to user_path(current_user.id), class:"nav-menu-item" do%>
+                  <%= link_to user_path(current_user.id), data: {"turbolinks" => false}, class:"nav-menu-item" do%>
                     <div class="nav-item-box pull-right">
                     <i class="fas fa-user-alt"></i> My page</div>
                   <% end %>
-                  <%= link_to rooms_path, class:"nav-menu-item" do%>
+                  <%= link_to rooms_path, data: {"turbolinks" => false}, class:"nav-menu-item" do%>
                     <div class="nav-item-box pull-right">
                     <i class="fas fa-comment-dots"></i> Talk</div>
                   <% end %>
@@ -71,15 +71,15 @@
             <% else %><!-- ゲストユーザのとき -->
 
               <div class="nav navbar-nav pull-right nav-menu">
-                <%= link_to new_user_registration_path, class:"nav-menu-item" do%>
+                <%= link_to new_user_registration_path, data: {"turbolinks" => false}, class:"nav-menu-item" do%>
                   <div class="nav-item-box pull-right">
                   <i class="fas fa-user-plus"></i> New</div>
                 <% end %>
-                <%= link_to new_user_session_path, class:"nav-menu-item" do%>
+                <%= link_to new_user_session_path, data: {"turbolinks" => false}, class:"nav-menu-item" do%>
                   <div class="nav-item-box pull-right">
                   <i class="fas fa-sign-in-alt"></i> Log in</div>
                 <% end %>
-                <%= link_to rooms_path, class:"nav-menu-item" do%>
+                <%= link_to rooms_path, data: {"turbolinks" => false}, class:"nav-menu-item" do%>
                   <div class="nav-item-box pull-right">
                   <i class="fas fa-comment-dots"></i> Talk</div>
                 <% end %>
@@ -95,7 +95,7 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-md-offset-10 col-md-2">
-            <%= link_to new_post_path do %>
+            <%= link_to new_post_path, data: {"turbolinks" => false} do %>
               <div class="post-btn">
                 <div class="i-plus"><i class="fas fa-plus"></i></div>
                 <div class="i-images"><i class="fas fa-images"></i></div>
@@ -115,23 +115,23 @@
           <div class="row">
 
             <div class="col-md-offset-4 col-md-4 col-sm-offset-2 col-sm-8 footer-item">
-              <%= link_to posts_about_path, class:"footer-menu" do%>
+              <%= link_to posts_about_path, data: {"turbolinks" => false}, class:"footer-menu" do%>
                 <div class="footer-menu-item pull-left">
                 <i class="fas fa-tint"></i> About</div>
               <% end %>
 
               <% if user_signed_in? && current_user.admin == false %><!--ユーザがログインしたとき-->
-                <%= link_to contacts_path, class:"footer-menu" do%>
+                <%= link_to contacts_path, data: {"turbolinks" => false}, class:"footer-menu" do%>
                   <div class="footer-menu-item pull-right">
                   <i class="fas fa-envelope"></i> Contact</div>
                 <% end %>
               <% elsif user_signed_in? && current_user.admin == true %> <!--adminのとき-->
-                <%= link_to contacts_path, class:"footer-menu" do%>
+                <%= link_to contacts_path, data: {"turbolinks" => false}, class:"footer-menu" do%>
                   <div class="footer-menu-item pull-right">
                   <i class="fas fa-envelope"></i> Contact</div>
                 <% end %>
               <% else %><!-- ゲストユーザのとき -->
-                <%= link_to new_user_session_path, class:"footer-menu" do%>
+                <%= link_to new_user_session_path, data: {"turbolinks" => false}, class:"footer-menu" do%>
                   <div class="footer-menu-item pull-right">
                   <i class="fas fa-envelope"></i> Contact</div>
                 <% end %>

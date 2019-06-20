@@ -1,23 +1,15 @@
-<% if current_user != @post.user %>
+<div class="like-box">
+  <% if user_signed_in? && post.user_id != current_user.id %>
 
-  <span class="like">
-
-    <% if @post.like?(current_user) %>
-      <%= form_for(@post.favorites.find_by(user_id: current_user.id), method: :delete, remote: true) do |f| %>
-        <%= button_tag(class: "btn btn-default btn-xs") do %>
-          <%= content_tag :span, "#{@post.favorites_count}", class: "glyphicon glyphicon-heart" %>
-        <% end %>
-      <% end %>
-
-    <% else %>
-      <%= form_for(@post.favorites.build, remote: true) do |f| %>
-        <div><%= hidden_field_tag :post_id, @post.id %></div>
-        <%= button_tag(class: "btn btn-default btn-xs") do %>
-          <%= content_tag :span, "#{@post.favorites_count}", class: "glyphicon glyphicon-heart-empty" %>
-        <% end %>
-      <% end %>
+    <% if post.liked_by?(current_user) %><!-- カレントユーザにいいねされていたら -->
+      <p><%=link_to post_favorites_path(post.id), method: :delete, remote: true do%><i class="fas fa-heart"><%= post.favorites.count %></i><% end %></p>
+    <% else %><!-- カレントユーザにいいねされていなかったら -->
+      <p class="like"><%=link_to post_favorites_path(post.id), method: :post, data: {"turbolinks" => false}, remote: true do%><i class="far fa-heart"><%= post.favorites.count %></i><% end %></p>
     <% end %>
 
-  </span>
+  <% else %>
 
-<% end %>
+    <p><i class="fas fa-heart"></i><%= post.favorites.count %></p>
+
+  <% end %>
+</div>
