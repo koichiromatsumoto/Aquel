@@ -5,10 +5,14 @@
 		<div class="row">
 			<div class="col-md-5">
 				<%= form_for(@album, remote: true) do |f| %>
-					<h3>アルバム作成</h3>
-					<%= f.label :name, "タイトル" %>
-					<%= f.text_field :name, autofocus: true, id:"album_text" %>
-					<%= f.submit "作成" %>
+					<h3 class="heading">アルバム作成</h3>
+					<div class="field">
+						<%= f.label :name, "タイトル" %>
+						<%= f.text_field :name, autofocus: true, id:"album_text" %>
+					</div>
+					<div class="create-btn">
+						<%= f.submit "作成", class:"btn-success-user" %>
+					</div>
 				<% end %>
 			</div>
 

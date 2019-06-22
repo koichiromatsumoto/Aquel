@@ -1,13 +1,33 @@
-<div class="container">
+<div class="container album-show">
 	<div class="row">
-		<div class="col-md-offset-2 col-md-8">
+		<h1 class="heading"><%= @album.name %></h1>
+		<div class="col-md-4">
+			<% @albums.each do |album| %>
+			    <%= link_to album_path(album.id), data: {"turbolinks" => false}, class:"album-link" do %>
+					<div class="album-box">
+						<div class="album-name">
+						    <h2><%= album.name %></h2>
+					    </div>
+					    <div class="album-image">
+					    	<% album.posts.first(2).each do |post| %>
+							<%= attachment_image_tag post, :post_image, :fill, 100, 100, format:"jpg", fallback:"no_image.jpg", size:"100x100" %>
+							<% end %>
+					    </div>
+					    <div class="post-count">
+							<h3>計 <%= album.posts.count %> 枚</h3>
+						</div>
+					</div>
+				<% end %>
+			<% end %>
+		</div>
+		<div class="col-md-offset-1 col-md-7">
 			<% @album.posts.map do |post| %>
-				<%= attachment_image_tag post, :post_image, :fill, 300, 300, format:"jpg", fallback:"no_image.jpg", size:"300x300" %>
+				<%= attachment_image_tag post, :post_image, format:"jpg", fallback:"no_image.jpg", class:"album-post" %>
 				<%= link_to "削除", album_posts_album_out_path(@album, post), method: :delete, data: {"turbolinks" => false}, class:"btn" %>
 			<% end %>
 		</div>
-		<div class="col-md-6">
-			<%= link_to "アルバムを削除", album_path(@album.id), method: :delete, data: {"turbolinks" => false}, class:"btn btn-default" %>
+		<div class="col-md-offset-9 col-md-3">
+			<%= link_to "このアルバムを削除", album_path(@album.id), method: :delete, data: {"turbolinks" => false}, class:"btn btn-default" %>
 		</div>
 	</div>
 </div>

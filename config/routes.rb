@@ -31,7 +31,7 @@ Rails.application.routes.draw do
   resources :rooms, only: [:index, :show, :create, :destroy]
 
 # Contactsコントローラルーティング
-  resources :contacts, only: [:index, :show, :create, :destroy]
+  resources :contacts, only: [:new, :index, :show, :update, :create, :destroy]
 
 # Relationshipsコントローラルーティング
   resources :relationships, only: [:create, :destroy]

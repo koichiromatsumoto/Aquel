@@ -8,6 +8,7 @@ class UsersController < ApplicationController
     @current_user = User.find(current_user.id)
     @follow_users = @current_user.following.all
     @timeline_posts = Post.where(user_id: @follow_users).order(created_at: :desc)
+    @albums = Album.where(user_id: @user.id).all
   end
 
   def edit

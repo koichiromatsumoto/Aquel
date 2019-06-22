@@ -41,25 +41,25 @@
 	color: #000;
 }
 
-.post-box .btn-post{
+.post-box .btn-success-user{
 	width: 100%;
 	margin-top: 50px;
 	display: inline-block;
 	padding: 0.3em 1em;
 	text-decoration: none;
-	color: #ff8b5f;
-	border: 2px solid #ff8b5f;
+	color: #67c5ff;
+	border: 2px solid #67c5ff;
 	border-radius: 3px;
 	transition: .2s;
 }
 
-.post-box .btn-post:hover {
-	background: #ff8b5f;
+.post-box .btn-success-user:hover {
+	background: #67c5ff;
 	color: white;
 	text-decoration: none;
 }
 
-.post-box .btn-post:action {
+.post-box .btn-success-user:active {
 	text-decoration: none;
 }
 
@@ -191,9 +191,63 @@
 	font-size: 20px;
 }
 
+.post-show-box .post-user{
+	color: #fff;
+}
+
+.post-show-box .post-user:hover{
+	color: #fff;
+	text-decoration: none;
+}
+
 #album-index.modal-text {
     overflow-y: auto;
     max-height: 65%;
+}
+
+#album-index .heading{
+	width: 80%;
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+#album-index .create-btn{
+	width: 90%;
+	text-align: right;
+}
+
+#album-index #albums{
+	width: 55%;
+}
+
+#album-index .album-box{
+	background-color: #dcdcdc;
+	padding: 20px;
+	margin-top: 20px;
+	border-radius: 6px;
+}
+
+#album-index .album-box h3{
+	margin-top: 0;
+	width: 100%;
+}
+
+#album-index .album-image{
+	display: inline-block;
+}
+
+#album-index .album-post{
+	display: inline-block;
+}
+
+#album-index .album-in{
+	display: inline-block;
+	text-align: right;
+	width: 100%;
+}
+
+#album-index .album-exist{
+	display: inline-block;
 }
 
 .like-box .fas{
@@ -209,6 +263,35 @@
 .post-edit-img{
 	width: 95%;
 	height: auto;
+	margin-bottom: 25px;
+}
+
+.post-edit .heading{
+	width: 100%;
+	text-align: center;
+}
+
+.post-box .edit-actions .btn-post{
+	width: 100%;
+	margin-right: 10px;
+	margin-top: 20px;
+	display: inline-block;
+	padding: 0.3em 1em;
+	text-decoration: none;
+	color: #ff8b5f;
+	border: 2px solid #ff8b5f;
+	border-radius: 3px;
+	transition: .2s;
+}
+
+.post-box .edit-actions .btn-post:hover {
+	background: #ff8b5f;
+	color: white;
+	text-decoration: none;
+}
+
+.post-box .edit-actions .btn-post:active {
+	text-decoration: none;
 }
 
 

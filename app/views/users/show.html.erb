@@ -22,8 +22,8 @@
 	<div class="row">
 		<div class="col-md-offset-1 col-md-3">
 			<div class="follow">
-			    <a href="#tab2"><h4>フォロー <%= @user.following.count %></h4></a>
-			    <a href="#tab3"><h4>フォロワー <%= @user.followers.count %></h4></a>
+			    <a href="#tab2" class="count"><h4>フォロー <%= @user.following.count %></h4></a>
+			    <a href="#tab3" class="count"><h4> フォロワー <%= @user.followers.count %></h4></a>
 			    <%= render 'users/follow' %>
 			</div>
 
@@ -40,7 +40,7 @@
 							    </div>
 							<% end %>
 						<% else %>
-						    <p class="no-timeline">タイムラインはありません</p>
+						    <p class="no-timeline">ユーザをフォローしていません</p>
 						<% end %>
 					</div>
 				</div>
@@ -71,7 +71,7 @@
 	        	<div id="tab4" class="tab">
 	        		<%= render 'users/favorites' %>
 	        	</div>
-	        	<div id="tab4" class="tab">
+	        	<div id="tab5" class="tab">
 	        		<%= render 'users/albums' %>
 	        	</div>
 	        </div>

@@ -10,6 +10,7 @@ class AlbumsController < ApplicationController
 
   def show
     @album = Album.find(params[:id])
+    @albums = Album.where(user_id: @album.user.id).order(created_at: :desc)
   end
 
   def create
