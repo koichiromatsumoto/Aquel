@@ -83,10 +83,10 @@
 }
 
 #tab-menu .active {
-  background-color: orange;
-  border-bottom: none;
-  color: #fff;
-  border-radius: 4px;
+	background-color: orange;
+	border-bottom: none;
+	color: #fff;
+	border-radius: 4px;
 }
 
 .follow{
@@ -180,6 +180,14 @@
 	padding: 20px;
 	margin-top: 20px;
 	border-radius: 6px;
+	box-shadow: 5px 5px 10px #000;
+	-webkit-box-shadow: 5px 5px 10px #000;
+	-moz-box-shadow: 5px 5px 10px #000;
+	transition: .2s;
+}
+
+.albums .album-box:hover{
+    background-color: #fff;
 }
 
 .albums .album-link{

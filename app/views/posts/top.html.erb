@@ -1,0 +1,79 @@
+<div class="container-fluid top">
+
+	<div class="row">
+		<div class="main-visual">
+			<div class="col-md-offset-3 col-md-6">
+				<div class="main-visual-text">
+					<h2>Communities for the aqualist<br><br>
+					by the aqualist<br><br>
+					of the aqualist.
+					</h2>
+				</div>
+			</div>
+			<div class="col-md-offset-4 col-md-4">
+				<%= link_to "このサイトについて", posts_about_path, class:"btn-success-user", data: {"turbolinks" => false} %>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-offset-2 col-md-8">
+			<div class="post-order">
+				<ul id="tab-menu">
+					<a href="#tab1" class="active"><li>新着</li></a>
+					<a href="#tab2" class=""><li>トレンド</li></a>
+		        </ul>
+		    </div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-offset-2 col-md-8">
+
+	        <div id="tab-contents">
+	        	<div id="tab1" class="tab">
+					<div class="row index-box late-posts">
+						<% @posts.order(created_at: :desc).first(9).each do |post| %>
+						  <div class="col-md-4 index-post-box">
+						    <div class="post-img"><%= link_to post_path(post.id), data: {"turbolinks" => false} do %><%= attachment_image_tag post, :post_image, :fill, 300, 300, format: 'jpg', fallback:'no_image.jpg', size:'300x300' %><% end %>
+								<div class="post-title"><%= post.title %></div>
+								<div class="post-user"><%= post.user.name %></div>
+								<div class="post-like">
+									<div id="likes_buttons_<%= post.id %>">
+								    	<%= render partial: 'favorites/favorite', locals: {post: post} %>
+								    </div>
+								</div>
+						    </div>
+						  </div>
+						<% end %>
+					</div>
+				</div>
+
+				<div id="tab2" class="tab">
+					<div class="row index-box trend-posts">
+						<% @posts.order("favorites_count" => :desc).first(9).each do |post| %>
+						<div class="col-md-4 index-post-box">
+							<div class="post-img"><%= link_to post_path(post.id), data: {"turbolinks" => false} do %><%= attachment_image_tag post, :post_image, :fill, 300, 300, format: 'jpg', fallback:'no_image.jpg', size:'300x300' %><% end %>
+							    <div class="post-title"><%= post.title %></div>
+							    <div class="post-user"><%= post.user.name %></div>
+							    <div class="post-like">
+							      	<div id="likes_buttons_<%= post.id %>">
+							            <%= render partial: 'favorites/favorite', locals: {post: post} %>
+							        </div>
+						      </div>
+							</div>
+						</div>
+						<% end %>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-offset-4 col-md-4 top-low">
+			<%= link_to posts_path, class:"btn-success-user", data: {"turbolinks" => false} do %>投稿一覧へ<% end %>
+		</div>
+	</div>
+
+</div>

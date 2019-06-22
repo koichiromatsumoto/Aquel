@@ -1,6 +1,9 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, only:[:new, :create, :edit, :update, :destroy, :album_in, :album_out, :hashtag]
 
+  def top
+    @posts = Post.all
+  end
 
   def new
     @post = Post.new
