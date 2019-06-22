@@ -18,6 +18,11 @@ class User < ApplicationRecord
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
 
+  validates :name, presence: true, length: { maximum: 12 }
+  validates :introduction, length: { maximum: 100 }
+  validates :status, inclusion: { in: [true, false] }
+  validates :admin, inclusion: { in: [true, false] }
+
   def follow(other_user)
     unless self == other_user
       following << other_user

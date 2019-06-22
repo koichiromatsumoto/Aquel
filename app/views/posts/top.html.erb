@@ -4,9 +4,9 @@
 		<div class="main-visual">
 			<div class="col-md-offset-3 col-md-6">
 				<div class="main-visual-text">
-					<h2>Communities for the aqualist<br><br>
-					by the aqualist<br><br>
-					of the aqualist.
+					<h2>Communities for the aqualists<br><br>
+					by the aqualists<br><br>
+					of the aqualists.
 					</h2>
 				</div>
 			</div>
@@ -33,7 +33,7 @@
 	        <div id="tab-contents">
 	        	<div id="tab1" class="tab">
 					<div class="row index-box late-posts">
-						<% @posts.order(created_at: :desc).first(9).each do |post| %>
+						<% @late_posts.each do |post| %>
 						  <div class="col-md-4 index-post-box">
 						    <div class="post-img"><%= link_to post_path(post.id), data: {"turbolinks" => false} do %><%= attachment_image_tag post, :post_image, :fill, 300, 300, format: 'jpg', fallback:'no_image.jpg', size:'300x300' %><% end %>
 								<div class="post-title"><%= post.title %></div>
@@ -51,7 +51,7 @@
 
 				<div id="tab2" class="tab">
 					<div class="row index-box trend-posts">
-						<% @posts.order("favorites_count" => :desc).first(9).each do |post| %>
+						<% @trend_posts.each do |post| %>
 						<div class="col-md-4 index-post-box">
 							<div class="post-img"><%= link_to post_path(post.id), data: {"turbolinks" => false} do %><%= attachment_image_tag post, :post_image, :fill, 300, 300, format: 'jpg', fallback:'no_image.jpg', size:'300x300' %><% end %>
 							    <div class="post-title"><%= post.title %></div>
