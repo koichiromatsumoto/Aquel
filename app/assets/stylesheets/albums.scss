@@ -5,7 +5,16 @@
 .album-show .heading{
 	width: 100%;
 	text-align: center;
-	margin: 50px;
+	margin-top: 50px;
+	margin-bottom: 30px;
+}
+
+.album-show .album-destroy{
+	margin-bottom: 20px;
+}
+
+.album-show .btn-withdrawuser{
+	margin-top: 5px;
 }
 
 .album-show .album-post{
@@ -13,11 +22,24 @@
 	height: auto;
 }
 
+.album-show .post-content{
+    margin-bottom: 60px;
+}
+
+.album-show .sidebar{
+	margin-top: 150px;
+}
+
 .album-show .album-box{
 	background-color: #dcdcdc;
 	padding: 20px;
-	margin-top: 20px;
 	border-radius: 6px;
+	transition: .2s;
+	margin-bottom: 30px;
+}
+
+.album-show .album-box:hover{
+	background-color: #fff;
 }
 
 .album-show .album-link{

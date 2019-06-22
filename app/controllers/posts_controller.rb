@@ -2,7 +2,8 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, only:[:new, :create, :edit, :update, :destroy, :album_in, :album_out, :hashtag]
 
   def top
-    @posts = Post.all
+    @late_posts = Post.order(created_at: :desc).all
+    @trend_posts = Post.where(created_at: Time.now.beginning_of_month..Time.now.end_of_month).order("favorites_count" => :desc).all
   end
 
   def new
@@ -22,11 +23,12 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all
+    @late_posts = Post.order(created_at: :desc).page(params[:late_page]).per(12)
+    @trend_posts = Post.where(created_at: Time.now.beginning_of_month..Time.now.end_of_month).order("favorites_count" => :desc).page(params[:trend_page]).per(12)
   end
 
   def search_result
-    @search_posts = @search.result(distinct: true).all
+    @search_posts = @search.result(distinct: true).page(params[:page]).per(12)
   end
 
   def show

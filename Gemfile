@@ -76,4 +76,6 @@ gem 'jquery-rails'
 gem 'ransack'
 # cssフレームワーク
 gem 'bootstrap-sass', '~> 3.3.6'
+# ページャー用
+gem 'kaminari'
 

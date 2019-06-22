@@ -27,8 +27,7 @@
 
 		<div class="row">
 			<div class="col-md-offset-2 col-md-8 post-title">
-				<p><%= @post.title %>
-				<span></span></p>
+				<p><%= @post.title %></p>
 			</div>
 
 			<div class="col-md-offset-2 col-md-8 post-text">
@@ -36,11 +35,13 @@
 			</div>
         </div>
 
-		<div class="row">
-			<div class="col-md-offset-9 col-md-2">
-				<%= link_to "編集する", edit_post_path(@post.id), class:"form btn btn-post", data: {"turbolinks" => false} %>
+        <% if @post.user == current_user || current_user.admin == true %>
+			<div class="row">
+				<div class="col-md-offset-9 col-md-2">
+					<%= link_to "編集する", edit_post_path(@post.id), class:"btn-success-user", data: {"turbolinks" => false} %>
+				</div>
 			</div>
-		</div>
+		<% end %>
 
 	</div>
 </div>
