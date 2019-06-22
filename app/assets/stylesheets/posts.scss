@@ -2,6 +2,159 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+// トップページ
+.top .main-visual{
+	background-image: url("main_visual.jpg");
+	background-size: cover;
+	background-position: center;
+	position: relative;
+	width: 100%;
+	height: 95vh;
+	font-family: serif;
+}
+
+.top .main-visual::before{
+	background-color: rgba(0,0,0,0.4);
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	content: ' ';
+}
+
+.top .main-visual-text{
+	text-align: center;
+	margin-top: 25vh;
+	font-size: 70px;
+}
+
+.top .btn-success-user{
+	width: 100%;
+	text-align: center;
+	height: 40px;
+	line-height: 25px;
+	font-size: 18px;
+	margin-top: 30px;
+}
+
+.top .post-order{
+	margin-top: 120px;
+}
+
+.top li{
+	text-decoration: none;
+	list-style: none;
+	border-bottom: 2px solid #fff;
+	float: left;
+	width: 50%;
+	text-align: center;
+	height: 60px;
+	line-height: 60px;
+	font-size: 20px;
+	color: #a9a9a9;
+}
+
+.top .active li{
+	border-top: 4px solid #ffd700;
+	border-right: 2px solid #fff;
+	border-left: 2px solid #fff;
+	border-bottom: none;
+	color: #fff;
+	position: relative;
+	font-size: 24px;
+}
+
+.top .index-box{
+	margin-top: 30px;
+}
+
+.top .post-img{
+	width: 300px;
+	height: 300px;
+	margin: 10px auto;
+	position: relative;
+	display: block;
+	transition: .2s;
+}
+
+.top .post-img::before{
+	content: '';
+	background: linear-gradient(to bottom, transparent, #000 30%);
+	opacity: 0.8;
+	height: 70px;
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	left: 0;
+}
+
+.top .post-title{
+	padding-left: 15px;
+	position: absolute;
+	bottom: 27px;
+}
+
+.top .post-user{
+	padding-left: 15px;
+	position: absolute;
+	bottom: 7px;
+}
+
+.top .post-like{
+	position: absolute;
+	bottom: 0px;
+	right: 15px;
+}
+
+
+
+
+
+// Aboutページ
+.about .about-visual{
+	background-image: url("about_visual2.jpg");
+	background-size: cover;
+	background-position: center;
+	position: relative;
+	width: 100%;
+	height: 100vh;
+	font-family: serif;
+}
+
+.about .about-visual::before{
+	background-color: rgba(0,0,0,0.4);
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	content: ' ';
+}
+
+.about .about-visual-text{
+	text-align: center;
+	margin-top: 35vh;
+	font-size: 70px;
+}
+
+.about .heading{
+	width: 100%;
+	text-align: center;
+	margin-top: 70px;
+	margin-bottom: 30px;
+	font-family: serif;
+}
+
+.about .text{
+	padding: 0 30px 30px 30px;
+}
+
+
+
+
+
 // 投稿ページ
 .post {
 }
@@ -155,6 +308,10 @@
 	color: #fff;
 }
 
+
+
+
+
 // 検索結果ページ
 .search-word{
 	margin-bottom: 50px;
@@ -163,6 +320,10 @@
 .search-nothing{
 	margin-top: 60px;
 }
+
+
+
+
 
 // 投稿詳細ページ
 .post-show-img{
@@ -257,6 +418,10 @@
 .like-box .far{
 	color:#fff;
 }
+
+
+
+
 
 // 投稿編集ページ
 
