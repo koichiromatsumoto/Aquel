@@ -1,4 +1,4 @@
-<div class="container post">
+<div class="container post-show">
     <div class="post-show-box" id="post-<%= @post.id %>" data-post-id="<%= @post.id %>">
 
     	<div class="row post-img">
@@ -9,8 +9,12 @@
 
 		<div class="row post-menu">
 		    <div class="col-md-offset-2 col-md-6">
-		    	<%= attachment_image_tag @post.user, :profile_image, :fill, 80, 80, format:"jpg", fallback:"no_image.jpg", size: "80x80", class:"img-circle" %>
-		    	<%= @post.user.name %>
+		    	<h3>
+		    		<%= link_to user_path(@post.user.id), data: {"turbolinks" => false}, class:"post-user" do%>
+			    		<%= attachment_image_tag @post.user, :profile_image, :fill, 80, 80, format:"jpg", fallback:"no_image.jpg", size: "80x80", class:"img-circle" %>
+			    		<%= @post.user.name %>
+			   		<% end %>
+			   	</h3>
 		    </div>
 			<div class="col-md-4">
 				<div id="likes_buttons_<%= @post.id %>">

@@ -1,3 +1,45 @@
 // Place all the styles related to the albums controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.album-show .heading{
+	width: 100%;
+	text-align: center;
+	margin: 50px;
+}
+
+.album-show .album-post{
+	width: 100%;
+	height: auto;
+}
+
+.album-show .album-box{
+	background-color: #dcdcdc;
+	padding: 20px;
+	margin-top: 20px;
+	border-radius: 6px;
+}
+
+.album-show .album-link{
+    color: #000;
+}
+
+.album-show .album-link:hover{
+	color: #000;
+	text-decoration: none;
+}
+
+.album-show .album-box h2{
+	margin-top: 0;
+	width: 100%;
+}
+
+.album-show .album-image{
+	display: inline-block;
+}
+
+.album-show .post-count{
+	display: inline-block;
+	width: 30%;
+	text-align: right;
+}

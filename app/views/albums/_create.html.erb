@@ -1,22 +1,22 @@
 
 
 <% current_user.albums.order(created_at: :desc).each do |album| %>
-	<div>
-		<div>
-		    <h4><%= album.name %></h4>
+	<div class="album-box">
+		<div class="album-name">
+		    <h3><%= album.name %></h3>
 	    </div>
-	    <div style="display: inline-block;">
-			<%= attachment_image_tag album.posts.last, :post_image, :fill, 100, 100, format:"jpg", fallback:"no_image.jpg", size:"100x100" %>
+	    <div class="album-image">
+			<%= attachment_image_tag album.posts.first, :post_image, :fill, 100, 100, format:"jpg", fallback:"no_image.jpg", size:"100x100" %>
 	    </div>
-	    <div style="display: inline-block;">
-			<h5>計 <%= album.posts.count %> 枚</h5>
+	    <div class="album-post">
+			<h4>計 <%= album.posts.count %> 枚</h4>
 		</div>
 		<% unless album.album_in?(@post) %>
-			<div style="display: inline-block;">
+			<div class="album-in">
 				<h5><%= link_to "このアルバムに追加", album_posts_album_in_path(album, @post), method: :post, data: {"turbolinks" => false}, class:"btn btn-default" %></h5>
 			</div>
 		<% else %>
-		    <div style="display: inline-block;">
+		    <div class="album-exist">
 				<h5>すでに追加されています</h5>
 			</div>
 		<% end %>

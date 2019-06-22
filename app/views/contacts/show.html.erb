@@ -1,2 +1,44 @@
-<h1>Contacts#show</h1>
-<p>Find me in app/views/contacts/show.html.erb</p>
+<div class="container contact">
+	<div class="row">
+		<h1 class="heading">Contact詳細</h1>
+		<div class="col-md-offset-1 col-md-10">
+
+            <div class="contact-list">
+			    <div class="contact-box">
+			    	<div class="contact-user">
+					    <%= attachment_image_tag @contact.user, :profile_image, :fill, 50, 50, format:"jpg", fallback:"no_image.jpg", size:"50x50", class:"img-circle" %>
+					    <span class="contact-user-name"><%= @contact.user.name %></span>
+					    <div class="contact-created-at"><%= @contact.created_at.strftime('%Y/%m/%d %H:%M') %></div>
+					</div>
+					<div class="contact-content">
+				    	<%= @contact.content %>
+				    </div>
+				    <div class="arrow">
+				    	<i class="fas fa-reply fa-rotate-180 fa-4x"></i>
+				    </div>
+				    <% if @contact.reply %>
+					    <div class="reply-box">
+					    	<h4>管理者より</h4>
+					    	<div class="reply-created-at"><%= @contact.updated_at.strftime('%Y/%m/%d %H:%M') %></div>
+						    <div class="contact-reply">
+						    	<%= @contact.reply %>
+						    </div>
+						</div>
+					<% else %>
+					    <h3 class="no-reply">回答していません</h3>
+					        <div class="reply-form">
+							    <%= form_for(@contact) do |f| %>
+	    					    <div class="field">
+							    	<%= f.text_area :reply, autofocus: true, placeholder:"回答を記入してください", class:"form-control" %>
+							    </div>
+							    <div class="actions">
+							    	<%= f.submit "送信", class:"btn-success-user" %>
+							    <% end %>
+							</div>
+					<% end %>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>

@@ -1,3 +1,158 @@
 // Place all the styles related to the contacts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// エンドユーザ側コンタクトページ
+.contact .heading{
+	width: 100%;
+	text-align: center;
+	margin-top: 30px;
+}
+
+.contact .contact-form{
+	padding: 50px 50px 0 50px;
+}
+
+.contact .field{
+	width: 80%;
+	margin: 0 auto;
+}
+
+.contact .actions{
+	width: 80%;
+	margin: 0 auto;
+	text-align: right;
+	padding-bottom: 100px;
+}
+
+.contact .btn-success-user{
+	margin-top: 30px;
+	width: 10%;
+}
+
+.contact .contact-list{
+	padding: 70px;
+	width: 80%;
+	margin: 0 auto;
+	border-top: 5px solid #fff;
+	border-bottom: 5px solid #fff;
+}
+
+.contact .contact-box{
+	margin-bottom: 30px;
+}
+
+.contact .contact-created-at{
+	width: 50%;
+	text-align: right;
+	display: inline-block;
+}
+
+.contact .contact-content{
+	background-color: #fff;
+	color: #000;
+	margin-top: 5px;
+	padding: 20px;
+	border-radius: 10px;
+	width: 75%;
+}
+
+.contact .arrow{
+	margin-left: 20px;
+	margin-top: 10px;
+	display: inline-block;
+}
+
+.contact .reply-box{
+    display: inline-block;
+    margin-top: 30px;
+    width: 75%;
+}
+
+.contact .reply-box h4{
+	display: inline-block;
+}
+
+.contact .reply-created-at{
+	width: 65%;
+	text-align: right;
+	display: inline-block;
+}
+
+.contact .contact-reply{
+	background-color: #e0ffff;
+	color: #000;
+	padding: 20px;
+	border-radius: 10px;
+}
+
+.contact .no-reply{
+	display: inline-block;
+	width: 75%;
+}
+
+// 管理者側コンタクト一覧ページ
+.contact .contact-content-unreplied{
+	background-color: #fff;
+	color: #000;
+	margin-top: 5px;
+	padding: 20px;
+	border-radius: 10px;
+	width: 80%;
+}
+
+.contact .contact-content-replied{
+	background-color: #e0ffff;
+	color: #000;
+	margin-top: 5px;
+	padding: 20px;
+	border-radius: 10px;
+	width: 80%;
+}
+
+.contact .nav-item{
+	margin-top: 20px;
+	margin-bottom: 10px;
+	display: inline-block;
+}
+
+.contact a{
+	color: #fff;
+	padding: 10px;
+	font-size: 16px;
+}
+
+.contact a:hover{
+	color: #fff;
+	text-decoration: none;
+}
+
+.contact a:active{
+	color: #fff;
+	text-decoration: none;
+}
+
+.contact .tab h2{
+	text-align: center;
+}
+
+// コンタクト詳細ページ
+.contact .reply-form .field{
+	margin-top: 70px;
+}
+
+.contact .reply-form .actions{
+	width: 80%;
+	margin: 0 auto;
+	text-align: right;
+	padding: 0;
+}
+
+.contact .reply-form .btn-success-user{
+	width: 15%;
+}
+
+
+
+
+

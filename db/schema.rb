@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_18_051806) do
+ActiveRecord::Schema.define(version: 2019_06_21_062510) do
 
   create_table "albums", force: :cascade do |t|
     t.integer "user_id"
@@ -34,6 +34,8 @@ ActiveRecord::Schema.define(version: 2019_06_18_051806) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "content"
+    t.text "reply"
     t.index ["user_id"], name: "index_contacts_on_user_id"
   end
 
@@ -106,7 +108,6 @@ ActiveRecord::Schema.define(version: 2019_06_18_051806) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "owner_id"
     t.index ["user_id"], name: "index_rooms_on_user_id"
   end
 

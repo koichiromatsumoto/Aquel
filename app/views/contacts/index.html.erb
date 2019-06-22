@@ -1,2 +1,121 @@
-<h1>Contacts#index</h1>
-<p>Find me in app/views/contacts/index.html.erb</p>
+<div class="container contact">
+	<div class="row">
+		<h1 class="heading">Contact一覧</h1>
+		<div class="col-md-offset-7 col-md-5">
+			<div class="" id="tab-menu">
+				<div class="nav-item"><a href="#tab1" class="active">未回答</a></div>
+				<div class="nav-item"><a href="#tab2">回答済み</a></div>
+				<div class="nav-item"><a href="#tab3">すべて</a></div>
+			</div>
+		</div>
+
+		<div class="col-md-offset-1 col-md-10">
+            <div class="contact-list">
+				<div id="tab-contents">
+
+					<div id="tab1" class="tab">
+						<table class="table contactindex">
+							<% if @unreplied_contacts.present? %>
+								<thead>
+									<tr>
+										<th>ユーザ名</th>
+										<th>本文</th>
+										<th>日時</th>
+										<th>回答</th>
+									</tr>
+								</thead>
+								<tbody>
+									<% @unreplied_contacts.each do |contact| %>
+									<tr>
+										<td><%= link_to user_path(contact.user.id) do %><%= contact.user.name %><% end %></td>
+										<td><%= link_to contact_path(contact.id) do %><%= contact.content %><% end %></td>
+										<td><%= link_to contact_path(contact.id) do %><%= contact.created_at.strftime('%Y/%m/%d %H:%M') %><% end %></td>
+										<td>
+											<% if contact.reply? %>
+												<%= link_to contact_path(contact.id) do %><%= contact.updated_at.strftime('%Y/%m/%d %H:%M') %><% end %>
+											<% else %>
+												<%= link_to contact_path(contact.id) do %>回答する<% end %>
+											<% end %>
+										</td>
+									</tr>
+									<% end %>
+							    </tbody>
+							<% else %>
+								<h2>未回答の問い合わせはありません</h2>
+							<% end %>
+						</table>
+					</div>
+
+					<div id="tab2" class="tab">
+						<table class="table contactindex">
+							<% if @replied_contacts.present? %>
+								<thead>
+									<tr>
+										<th>ユーザ名</th>
+										<th>本文</th>
+										<th>日時</th>
+										<th>回答</th>
+									</tr>
+								</thead>
+								<tbody>
+									<% @replied_contacts.each do |contact| %>
+									<tr>
+										<td><%= link_to user_path(contact.user.id) do %><%= contact.user.name %><% end %></td>
+										<td><%= link_to contact_path(contact.id) do %><%= contact.content %><% end %></td>
+										<td><%= link_to contact_path(contact.id) do %><%= contact.created_at.strftime('%Y/%m/%d %H:%M') %><% end %></td>
+										<td>
+											<% if contact.reply? %>
+												<%= link_to contact_path(contact.id) do %><%= contact.updated_at.strftime('%Y/%m/%d %H:%M') %><% end %>
+											<% else %>
+												<%= link_to contact_path(contact.id) do %>回答する<% end %>
+											<% end %>
+										</td>
+									</tr>
+									<% end %>
+							    </tbody>
+							<% else %>
+								<h2>回答済みの問い合わせはありません</h2>
+							<% end %>
+						</table>
+					</div>
+
+					<div id="tab3" class="tab">
+						<table class="table contactindex">
+							<% if @contacts.present? %>
+								<thead>
+									<tr>
+										<th>ユーザ名</th>
+										<th>本文</th>
+										<th>日時</th>
+										<th>回答</th>
+									</tr>
+								</thead>
+								<tbody>
+									<% @contacts.each do |contact| %>
+									<tr>
+										<td><%= link_to user_path(contact.user.id) do %><%= contact.user.name %><% end %></td>
+										<td><%= link_to contact_path(contact.id) do %><%= contact.content %><% end %></td>
+										<td><%= link_to contact_path(contact.id) do %><%= contact.created_at.strftime('%Y/%m/%d %H:%M') %><% end %></td>
+										<td>
+											<% if contact.reply? %>
+												<%= link_to contact_path(contact.id) do %><%= contact.updated_at.strftime('%Y/%m/%d %H:%M') %><% end %>
+											<% else %>
+												<%= link_to contact_path(contact.id) do %>回答する<% end %>
+											<% end %>
+										</td>
+									</tr>
+									<% end %>
+							    </tbody>
+							<% else %>
+								<h2>問い合わせはありません</h2>
+							<% end %>
+						</table>
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+

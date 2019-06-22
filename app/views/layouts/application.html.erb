@@ -121,12 +121,12 @@
               <% end %>
 
               <% if user_signed_in? && current_user.admin == false %><!--ユーザがログインしたとき-->
-                <%= link_to contacts_path, data: {"turbolinks" => false}, class:"footer-menu" do%>
+                <%= link_to new_contact_path, data: {"turbolinks" => false}, class:"footer-menu" do%>
                   <div class="footer-menu-item pull-right">
                   <i class="fas fa-envelope"></i> Contact</div>
                 <% end %>
               <% elsif user_signed_in? && current_user.admin == true %> <!--adminのとき-->
-                <%= link_to contacts_path, data: {"turbolinks" => false}, class:"footer-menu" do%>
+                <%= link_to new_contact_path, data: {"turbolinks" => false}, class:"footer-menu" do%>
                   <div class="footer-menu-item pull-right">
                   <i class="fas fa-envelope"></i> Contact</div>
                 <% end %>
