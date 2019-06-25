@@ -33,14 +33,14 @@
 	        <div id="tab-contents">
 	        	<div id="tab1" class="tab">
 					<div class="row index-box late-posts">
-						<% @late_posts.each do |post| %>
+						<% @late_posts.first(9).each do |post| %>
 						  <div class="col-md-4 index-post-box">
 						    <div class="post-img"><%= link_to post_path(post.id), data: {"turbolinks" => false} do %><%= attachment_image_tag post, :post_image, :fill, 300, 300, format: 'jpg', fallback:'no_image.jpg', size:'300x300' %><% end %>
 								<div class="post-title"><%= post.title %></div>
 								<div class="post-user"><%= post.user.name %></div>
 								<div class="post-like">
-									<div id="likes_buttons_<%= post.id %>">
-								    	<%= render partial: 'favorites/favorite', locals: {post: post} %>
+									<div id="late_likes_buttons_<%= post.id %>">
+								    	<%= render partial: 'favorites/late_favorite', locals: {post: post} %>
 								    </div>
 								</div>
 						    </div>
@@ -51,14 +51,14 @@
 
 				<div id="tab2" class="tab">
 					<div class="row index-box trend-posts">
-						<% @trend_posts.each do |post| %>
+						<% @trend_posts.first(9).each do |post| %>
 						<div class="col-md-4 index-post-box">
 							<div class="post-img"><%= link_to post_path(post.id), data: {"turbolinks" => false} do %><%= attachment_image_tag post, :post_image, :fill, 300, 300, format: 'jpg', fallback:'no_image.jpg', size:'300x300' %><% end %>
 							    <div class="post-title"><%= post.title %></div>
 							    <div class="post-user"><%= post.user.name %></div>
 							    <div class="post-like">
-							      	<div id="likes_buttons_<%= post.id %>">
-							            <%= render partial: 'favorites/favorite', locals: {post: post} %>
+							      	<div id="trend_likes_buttons_<%= post.id %>">
+							            <%= render partial: 'favorites/trend_favorite', locals: {post: post} %>
 							        </div>
 						      </div>
 							</div>
@@ -72,7 +72,7 @@
 
 	<div class="row">
 		<div class="col-md-offset-4 col-md-4 top-low">
-			<%= link_to posts_path, class:"btn-success-user", data: {"turbolinks" => false} do %>投稿一覧へ<% end %>
+			<%= link_to posts_path, class:"btn-success-user", data: {"turbolinks" => false} do %>すべての投稿一覧へ<% end %>
 		</div>
 	</div>
 

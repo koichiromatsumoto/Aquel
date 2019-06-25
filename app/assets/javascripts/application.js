@@ -113,9 +113,21 @@ $(function(){
       $(".tab2 a").addClass("active");
     } else if($(this).attr("href") == ("#tab3")){
       $(".tab3 a").addClass("active");
-    }
+    };
     $($(this).attr("href")).show();
     return false;
+  });
+});
+
+// kaminariとタブの共存用
+
+$(function(){
+  $('#page').on('click', function() {
+    if ($(this).attr("param_name") == ('late_page')){
+      $(".tab2").hide();
+    } else if($(this).attr("param_name") == ("trend_page")){
+      $(".tab1").hide();
+    };
   });
 });
 

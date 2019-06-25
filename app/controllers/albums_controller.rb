@@ -1,11 +1,13 @@
 class AlbumsController < ApplicationController
+  before_action :authenticate_user!, only:[:create, :destroy]
+
   def index
   	@albums = Album.all.order(created_at: :desc)
   	@album = Album.new
 		respond_to do |format|
 		  format.html
 		  format.js
-	    end
+	  end
   end
 
   def show
@@ -17,11 +19,13 @@ class AlbumsController < ApplicationController
   	@albums = Album.all.order(created_at: :desc)
   	@album = Album.new(album_params)
   	@album.user_id = current_user.id
+    @post = Post.find(session[:post_id].to_i)
   	if @album.save
 	  	respond_to do |format|
 	      format.html
 	      format.js
 	    end
+      session[:post_id] = nil
   	else
   		format.html {render :index}
   	end

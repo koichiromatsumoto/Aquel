@@ -1,0 +1,58 @@
+
+
+<div class="container admin-show">
+	<div class="row">
+		<div class="col-md-12">
+			<h1 class="heading">管理者ページ</h1>
+		</div>
+
+		<div class="col-md-4">
+			<div class="sidebar">
+				<ul>
+					<li><%= link_to "ユーザ一覧", users_path, data: {"turbolinks" => false} %></li>
+					<li><%= link_to "投稿一覧", posts_path, data: {"turbolinks" => false} %></li>
+					<li><%= link_to "トークルーム一覧", rooms_path, data: {"turbolinks" => false} %></li>
+					<li><%= link_to "コンタクト一覧", contacts_path, data: {"turbolinks" => false} %></li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="col-md-8">
+			<div class="unreplied_contacts">
+
+				<% if @unreplied_contacts %>
+					<table class="table contactindex">
+						<thead>
+							<tr>
+								<th>ユーザ名</th>
+								<th>本文</th>
+								<th>日時</th>
+								<th>回答</th>
+							</tr>
+						</thead>
+						<tbody>
+							<% @unreplied_contacts.order(created_at: :asc).each do |contact| %>
+							<tr>
+								<td><%= link_to user_path(contact.user.id), data: {"turbolinks" => false} do %><%= contact.user.name %><% end %></td>
+								<td><%= link_to contact_path(contact.id), data: {"turbolinks" => false} do %><%= contact.content %><% end %></td>
+								<td><%= link_to contact_path(contact.id), data: {"turbolinks" => false} do %><%= contact.created_at.strftime('%Y/%m/%d %H:%M') %><% end %></td>
+								<td>
+									<% if contact.reply? %>
+										<%= link_to contact_path(contact.id), data: {"turbolinks" => false} do %><%= contact.updated_at.strftime('%Y/%m/%d %H:%M') %><% end %>
+									<% else %>
+										<%= link_to contact_path(contact.id), data: {"turbolinks" => false} do %>回答する<% end %>
+									<% end %>
+								</td>
+							</tr>
+							<% end %>
+					    </tbody>
+					</table>
+				<% else %>
+					<h2 class="no-contact">未回答の問い合わせはありません</h2>
+				<% end %>
+			</div>
+		</div>
+
+	</div>
+</div>
+

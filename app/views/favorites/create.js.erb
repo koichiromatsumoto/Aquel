@@ -1,2 +1,2 @@
-$('<%= @id_name %>').html("<%= j(render partial: 'favorites/favorite', locals: {post: @post}) %>");
-
+$('#late_likes_buttons_<%= @post.id %>').html("<%= j(render partial: 'favorites/late_favorite', locals: {post: @post}) %>");
+$('#trend_likes_buttons_<%= @post.id %>').html("<%= j(render partial: 'favorites/trend_favorite', locals: {post: @post}) %>");
