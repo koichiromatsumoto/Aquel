@@ -75,7 +75,7 @@ gem 'jquery-rails'
 # 検索用
 gem 'ransack'
 # cssフレームワーク
-gem 'bootstrap-sass', '~> 3.3.6'
+gem 'bootstrap-sass', '~> 3.4.1'
 # ページャー用
 gem 'kaminari'
 
