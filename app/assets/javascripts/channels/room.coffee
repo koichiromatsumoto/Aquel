@@ -8,7 +8,8 @@ document.addEventListener 'turbolinks:load', ->
       $('#messages').append data['message']
 
     speak: (message)->
-      @perform 'speak', message: message
+      unless message is ""
+        @perform 'speak', message: message
 
   $(document).on 'keypress', '[data-behavior~=room_speaker]', (event) ->
     if event.keyCode is 13 # return = send

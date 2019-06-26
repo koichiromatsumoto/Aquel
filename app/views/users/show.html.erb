@@ -4,9 +4,9 @@
 		<div class="col-md-offset-1 col-md-3">
 			<div class="user-profileimage">
 				<% if @user == current_user %>
-					<%= attachment_image_tag @user, :profile_image, format: 'jpg', fallback: 'no_image.jpg', class:"img-circle img-user", id:"modal-open", "data-target":"user-show" %>
+					<%= attachment_image_tag @user, :profile_image, format: 'jpg', fallback: '/images/no_image.jpg', class:"img-circle img-user", id:"modal-open", "data-target":"user-show", alt:"ユーザイメージ" %>
 				<% else %>
-				    <%= attachment_image_tag @user, :profile_image, format: 'jpg', fallback: 'no_image.jpg', class:"img-circle img-user" %>
+				    <%= attachment_image_tag @user, :profile_image, format: 'jpg', fallback: '/images/no_image.jpg', class:"img-circle img-user", alt:"ユーザイメージ" %>
 				<% end %>
 		    </div>
 		    <div class="follow">
@@ -37,7 +37,7 @@
 						<% if @timeline_posts.exists? %>
 							<% @timeline_posts.first(5).each do |timeline_post| %>
 							    <div class="timeline-post">
-							    	<%= link_to post_path(timeline_post.id), data: {"turbolinks" => false} do %><%= attachment_image_tag timeline_post, :post_image, format:"jpg", fallback:"no_image.jpg", class:"timeline-post-image" %><% end %>
+							    	<%= link_to post_path(timeline_post.id), data: {"turbolinks" => false} do %><%= attachment_image_tag timeline_post, :post_image, format:"jpg", fallback:"/images/no_image.jpg", class:"timeline-post-image", alt:"ポストイメージ" %><% end %>
 							    </div>
 							<% end %>
 						<% else %>

@@ -13,8 +13,13 @@ before_action :authenticate_user!
 
   def update
     @contact = Contact.find(params[:id])
-    @contact.update(contact_params)
-    redirect_to contact_path(@contact.id)
+    if @contact.update(contact_params)
+      flash[:success] = "回答を送信しました"
+      redirect_to contact_path(@contact.id)
+    else
+      flash[:danger] = "回答は1〜200文字で入力してください"
+      redirect_to contact_path(@contact.id)
+    end
   end
 
   def new
@@ -30,7 +35,7 @@ before_action :authenticate_user!
       flash[:success] = "送信しました"
       redirect_to new_contact_path
     else
-      flash[:danger] = "1〜200文字以内で送信してください"
+      flash[:danger] = "1〜200文字で送信してください"
       render :new
     end
   end

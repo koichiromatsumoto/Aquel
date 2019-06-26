@@ -7,7 +7,7 @@
     	<div class="row">
     		<%= form_for @user, url: user_path(@user.id)  do |f| %>
     		<div class="col-md-offset-1 col-md-2">
-    			<%= attachment_image_tag @user, :profile_image, :fill, 150, 150, format: 'jpg', fallback: 'no_image.jpg', size:'150x150', class:"img-circle modal-img-user" %>
+    			<%= attachment_image_tag @user, :profile_image, :fill, 150, 150, format: 'jpg', fallback: '/images/no_image.jpg', size:'150x150', class:"img-circle modal-img-user", alt:"ユーザイメージ" %>
     		</div>
     		<div class="col-md-offset-1 col-md-6">
 			    <div class="modal-field">
@@ -45,7 +45,7 @@
     		</div>
 
     		<div class="col-md-offset-1 col-md-2">
-    			<%= attachment_image_tag @user, :profile_image, :fill, 150, 150, format: 'jpg', fallback: 'no_image.jpg', size:'150x150', class:"img-circle modal-img-user" %>
+    			<%= attachment_image_tag @user, :profile_image, :fill, 150, 150, format: 'jpg', fallback: '/images/no_image.jpg', size:'150x150', class:"img-circle modal-img-user", alt:"ユーザイメージ" %>
     			<div><img id="user_img_prev" src="#" class='hidden img-circle' ></div>
     			<%= f.attachment_field :profile_image, class:"select-profile-image" %>
     		</div>

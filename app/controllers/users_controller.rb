@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
+  # カレントユーザとアドミンのみ可能なアクション
   before_action :correct_user, only:[:edit, :update, :withdraw]
+  # アドミンのみ可能なアクション
   before_action :require_admin, only:[:index, :admin, :admin_show]
 
 
@@ -28,13 +30,13 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-        redirect_to user_path(@user.id)
-        flash[:success] = 'ユーザ情報を編集しました'
+      redirect_to user_path(@user.id)
+      flash[:success] = 'ユーザ情報を編集しました'
     else
-      respond_to do |format|
-        format.html
-        format.js { :error }
+      @user.errors.full_messages.each do |msg|
+        flash[:danger] = msg
       end
+      redirect_to user_path(@user.id)
     end
   end
 
@@ -43,9 +45,13 @@ class UsersController < ApplicationController
   end
 
   def withdraw
-    current_user.update(status: false)
-    flash[:danger] = '退会しました'
-    redirect_to root_path
+    if current_user.update(status: false)
+      flash[:danger] = '退会しました'
+      redirect_to root_path
+    else
+      flash[:danger] = "退会に失敗しました"
+      render :withdraw
+    end
   end
 
   def admin

@@ -27,14 +27,20 @@ class AlbumsController < ApplicationController
 	    end
       session[:post_id] = nil
   	else
-  		format.html {render :index}
+      flash[:danger] = "アルバム名は1〜20文字で入力してください"
+  		redirect_to post_path(@post.id)
   	end
   end
 
   def destroy
     @album = Album.find(params[:id])
-    @album.destroy
-    redirect_to user_path(current_user.id)
+    if @album.destroy
+      flash[:success] = "アルバムを削除しました"
+      redirect_to user_path(current_user.id)
+    else
+      flash.now[:danger] = "アルバムの削除に失敗しました"
+      render :show
+    end
   end
 
   private
