@@ -6,8 +6,6 @@ class Post < ApplicationRecord
 
   has_many :favorites, dependent: :destroy
   has_many :iine_users, through: :favorites, source: :user, dependent: :destroy
-  has_many :post_hashtags, dependent: :destroy
-  has_many :hashtags, through: :post_hashtags, dependent: :destroy
   has_many :post_albums, dependent: :destroy
   has_many :albums, through: :post_albums
 

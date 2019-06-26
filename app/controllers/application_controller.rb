@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
     user_path(resource)
   end
 
+  # deviseのwarden::proxyエラーの回避
   def self.render_with_signed_in_user(user, *args)
    ActionController::Renderer::RACK_KEY_TRANSLATION['warden'] ||= 'warden'
    proxy = Warden::Proxy.new({}, Warden::Manager.new({})).tap{|i| i.set_user(user, scope: :user) }
@@ -18,10 +19,12 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  # サインアップ時にnameをキーとして認証するメソッド
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
   end
 
+  # ヘッダーの検索機能に関するメソッド
   def  set_search
     @search = Post.includes(:hashtags).ransack(params[:q])
     @search_late_posts = @search.result(distinct: true).order(id: :desc).all

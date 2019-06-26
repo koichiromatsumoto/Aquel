@@ -8,9 +8,12 @@ document.addEventListener 'turbolinks:load', ->
       $('#messages').append data['message']
 
     speak: (message)->
+      # 空での押下防止
       unless message is ""
+        # フォーム内のメッセージをサーバー側(channel)のspeakメソッドに送り呼び出す
         @perform 'speak', message: message
 
+  # エンターキーを押下した時にApp.room.speakイベントが発火
   $(document).on 'keypress', '[data-behavior~=room_speaker]', (event) ->
     if event.keyCode is 13 # return = send
       App.room.speak event.target.value

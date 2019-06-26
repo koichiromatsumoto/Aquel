@@ -1,5 +1,6 @@
 class RoomChannel < ApplicationCable::Channel
   def subscribed
+  	# そのルームを購読しているユーザにメッセージをブロードキャストする
     stream_from "room_channel_#{params['room_id']}"
   end
 
@@ -8,6 +9,7 @@ class RoomChannel < ApplicationCable::Channel
   end
 
   def speak(data)
+  	# 受け取ったメッセージとその他情報をdbへ
     Message.create!(content: data['message'], user_id: current_user.id, room_id: params['room_id'])
   end
 end
