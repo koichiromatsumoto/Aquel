@@ -18,7 +18,7 @@ class RoomsController < ApplicationController
   	if @room.save
   	  redirect_to room_path(@room)
     else
-      flash.now[:danger] = "ルーム名は1〜16文字以内で入力してください"
+      flash.now[:danger] = "ルーム名は1〜16文字で入力してください"
       render :index
     end
   end

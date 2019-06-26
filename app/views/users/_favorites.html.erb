@@ -7,7 +7,7 @@
 				    <% post = Post.find_by(id: favorite.post_id) %>
 				    <div class="post">
 				    	<%= link_to post_path(post.id), data: {"turbolinks" => false} do %>
-							<%= attachment_image_tag post, :post_image, format:"jpg", fallback:"no_image.jpg", class:"post-img" %>
+							<%= attachment_image_tag post, :post_image, format:"jpg", fallback:"/images/no_image.jpg", class:"post-img", alt:"ポストイメージ" %>
 						<% end %>
 					</div>
 				<% end %>

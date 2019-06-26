@@ -3,7 +3,7 @@
 		<div class="col-md-4 sidebar">
 			<div class="album-user">
 				<%= link_to user_path(@album.user.id), data: {"turbolinks" => false}, class:"album-user" do%>
-					<%= attachment_image_tag @album.user, :profile_image, :fill, 80, 80, format:"jpg", fallback:"no_image.jpg", size:"80x80", class:"img-circle" %>
+					<%= attachment_image_tag @album.user, :profile_image, :fill, 80, 80, format:"jpg", fallback:"/images/no_image.jpg", size:"80x80", class:"img-circle", alt:"ユーザイメージ" %>
 					<%= @album.user.name %>
 				<% end %>
 			</div>
@@ -15,7 +15,7 @@
 					    </div>
 					    <div class="album-image">
 					    	<% album.posts.first(2).each do |post| %>
-							<%= attachment_image_tag post, :post_image, :fill, 100, 100, format:"jpg", fallback:"no_image.jpg", size:"100x100" %>
+							<%= attachment_image_tag post, :post_image, :fill, 100, 100, format:"jpg", fallback:"/images/no_image.jpg", size:"100x100", alt:"ポストイメージ" %>
 							<% end %>
 					    </div>
 					    <div class="post-count">
@@ -30,14 +30,14 @@
 				<% if user_signed_in? %>
 					<% if @album.user == current_user || current_user.admin == true %>
 						<div class="col-md-offset-9 col-md-3 album-destroy">
-							<%= link_to "このアルバムを削除", album_path(@album.id), method: :delete, data: {"turbolinks" => false}, class:"btn btn-default" %>
+							<%= link_to "このアルバムを削除", album_path(@album.id), method: :delete, data: {"turbolinks" => false}, class:"btn btn-default", data:{confirm:"本当にこのアルバムを削除しますか?"} %>
 						</div>
 					<% end %>
 				<% end %>
 			<% @album.posts.each do |post| %>
 			    <div class="post-content">
 					<%= link_to post_path(post.id), data: {"turbolinks" => false} do %>
-						<%= attachment_image_tag post, :post_image, format:"jpg", fallback:"no_image.jpg", class:"album-post" %>
+						<%= attachment_image_tag post, :post_image, format:"jpg", fallback:"/images/no_image.jpg", class:"album-post", alt:"ポストイメージ" %>
 					<% end %>
 
 					<% if user_signed_in? %>

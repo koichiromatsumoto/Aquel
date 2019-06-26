@@ -11,7 +11,7 @@
 						    </div>
 						    <div class="album-image">
 						    	<% album.posts.first(3).each do |post| %>
-								<%= attachment_image_tag post, :post_image, :fill, 100, 100, format:"jpg", fallback:"no_image.jpg", size:"100x100" %>
+								<%= attachment_image_tag post, :post_image, :fill, 100, 100, format:"jpg", fallback:"/images/no_image.jpg", size:"100x100", alt:"ユーザイメージ" %>
 								<% end %>
 						    </div>
 						    <div class="album-post">

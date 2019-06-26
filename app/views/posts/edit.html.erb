@@ -10,7 +10,7 @@
 
     	<div class="row post-img">
 			<div class="col-md-12">
-				<%= attachment_image_tag @post, :post_image, format:"jpg", class:"post-edit-img" %>
+				<%= attachment_image_tag @post, :post_image, format:"jpg", fallback:"/images/no_image.jpg", class:"post-edit-img", alt:"ポストイメージ" %>
 			</div>
 		</div>
 
@@ -33,7 +33,7 @@
 				<%= f.submit "保存", class:"form btn-success-user" %>
 			</div>
 			<div class="col-md-5">
-			    <%= link_to post_path(@post.id), method: :delete, data: {"turbolinks" => false}, class:"pull-right" do %>
+			    <%= link_to post_path(@post.id), method: :delete, data: {"turbolinks" => false}, class:"pull-right", data:{confirm:"本当に投稿を削除しますか?"} do %>
 			        <button class="btn-post">投稿を削除</button>
 			    <% end %>
 			</div>

@@ -27,7 +27,7 @@
 
 						<div class="col-md-4 owner-box">
 							<div>
-								<%= attachment_image_tag room.user, :profile_image, :fill, 80, 80, format:"jpg", fallback:"no_image.jpg",  size:"80x80", class:"img-circle" %>
+								<%= attachment_image_tag room.user, :profile_image, :fill, 80, 80, format:"jpg", fallback:"/images/no_image.jpg",  size:"80x80", class:"img-circle", alt:"ユーザイメージ" %>
 							</div>
 						</div>
 

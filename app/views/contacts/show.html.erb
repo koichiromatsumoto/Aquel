@@ -8,7 +8,7 @@
             <div class="contact-list">
 			    <div class="contact-box">
 			    	<div class="contact-user">
-					    <%= attachment_image_tag @contact.user, :profile_image, :fill, 50, 50, format:"jpg", fallback:"no_image.jpg", size:"50x50", class:"img-circle" %>
+					    <%= attachment_image_tag @contact.user, :profile_image, :fill, 50, 50, format:"jpg", fallback:"/images/no_image.jpg", size:"50x50", class:"img-circle", alt:"ユーザイメージ" %>
 					    <span class="contact-user-name"><%= @contact.user.name %></span>
 					    <div class="contact-created-at"><%= @contact.created_at.strftime('%Y/%m/%d %H:%M') %></div>
 					</div>
@@ -42,7 +42,7 @@
 				</div>
 			</div>
 			<div class="col-md-offset-2 col-md-10">
-	            <%= link_to "この問い合わせを削除", contact_path(@contact.id), method: :delete, class:"btn btn-danger destroy" %>
+	            <%= link_to "この問い合わせを削除", contact_path(@contact.id), method: :delete, class:"btn btn-danger destroy", data:{confirm:"本当にこの問い合わせを削除しますか?"} %>
 	        </div>
 
 		</div>
