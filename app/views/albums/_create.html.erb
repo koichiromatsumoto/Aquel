@@ -1,24 +1,28 @@
 
+<% if user_signed_in? %>
+	<% current_user.albums.order(created_at: :desc).each do |album| %>
+		<%= link_to album_path(album.id), data: {"turbolinks" => false}, class:"album-link" do %>
+			<div class="album-box">
+				<div class="album-name">
+				    <h3><%= album.name %></h3>
+			    </div>
+			    <div class="album-image">
+					<%= attachment_image_tag album.posts.first, :post_image, :fill, 100, 100, format:"jpg", fallback:"no_image.jpg", size:"100x100" %>
+			    </div>
+			    <div class="album-post">
+					<h4>計 <%= album.posts.count %> 枚</h4>
+				</div>
+				<% unless album.posts.include?(@post) %>
+					<div class="album-in">
+						<h5><%= link_to "このアルバムに追加", album_posts_album_in_path(album, @post), method: :post, data: {"turbolinks" => false}, class:"btn btn-default" %></h5>
 
-<% current_user.albums.order(created_at: :desc).each do |album| %>
-	<div class="album-box">
-		<div class="album-name">
-		    <h3><%= album.name %></h3>
-	    </div>
-	    <div class="album-image">
-			<%= attachment_image_tag album.posts.first, :post_image, :fill, 100, 100, format:"jpg", fallback:"no_image.jpg", size:"100x100" %>
-	    </div>
-	    <div class="album-post">
-			<h4>計 <%= album.posts.count %> 枚</h4>
-		</div>
-		<% unless album.album_in?(@post) %>
-			<div class="album-in">
-				<h5><%= link_to "このアルバムに追加", album_posts_album_in_path(album, @post), method: :post, data: {"turbolinks" => false}, class:"btn btn-default" %></h5>
-			</div>
-		<% else %>
-		    <div class="album-exist">
-				<h5>すでに追加されています</h5>
+					</div>
+				<% else %>
+				    <div class="album-exist">
+						<h5>すでに追加されています</h5>
+					</div>
+				<% end %>
 			</div>
 		<% end %>
-	</div>
+	<% end %>
 <% end %>

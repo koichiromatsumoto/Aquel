@@ -17,7 +17,7 @@
 			</div>
 
 		    <div class="col-md-7" id="albums">
-		    	<%= render 'albums/create' %>
+		    	<%= render partial: 'albums/create', locals: { post: @post, album: @album } %>
 		    </div>
 		</div>
 	</div>

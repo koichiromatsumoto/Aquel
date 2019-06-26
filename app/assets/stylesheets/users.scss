@@ -354,3 +354,41 @@
 	width: 70%;
 	margin-top: 100px;
 }
+
+
+// 管理者ページ
+.admin-show .heading{
+	text-align: center;
+}
+
+.admin-show .sidebar{
+	border: 2px solid #fff;
+	border-radius: 6px;
+	padding: 20px;
+	width: 80%;
+	margin: 0 auto;
+}
+
+.admin-show .sidebar li{
+	list-style: none;
+	font-size: 20px;
+	padding: 15px;
+}
+
+.admin-show a{
+	color: #fff;
+	transition: .2s;
+}
+
+.admin-show a:hover{
+	text-decoration: none;
+	color: #fff;
+}
+
+.admin-show .no-contact{
+	text-align: center;
+}
+
+.admin-show .sidebar a:hover{
+	color: orange;
+}

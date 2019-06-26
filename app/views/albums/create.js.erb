@@ -1,2 +1,2 @@
-$('#albums').html("<%= j(render "albums/create" ) %>");
+$('#albums').html("<%= j(render partial: 'albums/create', locals: { post: @post, album: @album } ) %>");
 $("#album_text").val('')

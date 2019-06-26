@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'users/withdraw_view'
   patch '/users/:id/withdraw' => 'users#withdraw', as: 'user_withdraw'
   patch '/users/:id/admin' => 'users#admin', as: 'user_admin'
+  get '/users/admin_show' => 'users#admin_show', as: 'user_admin_show'
   resources :users, only: [:index, :show, :edit, :update]
 
 # Postsコントローラルーティング

@@ -1,5 +1,7 @@
 class FavoritesController < ApplicationController
 before_action :set_variables
+before_action :authenticate_user!
+
   def create
     favorite = current_user.favorites.build(post_id: params[:post_id])
     favorite.save
@@ -13,6 +15,5 @@ before_action :set_variables
 
   def set_variables
     @post = Post.find(params[:post_id])
-    @id_name = "#likes_buttons_#{@post.id}"
   end
 end

@@ -2,6 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+
+
 // トップページ
 .top .main-visual{
 	background-image: url("about_visual2.jpg");
@@ -108,6 +111,9 @@
 	right: 15px;
 }
 
+.top .top-low{
+	margin-bottom: 20px;
+}
 
 
 
@@ -219,6 +225,10 @@
 .post-box .btn-success-user:active {
 	text-decoration: none;
 }
+
+
+
+
 
 // 投稿一覧ページ
 .post-index{
@@ -367,7 +377,7 @@
 
 #album-index.modal-text {
     overflow-y: auto;
-    max-height: 65%;
+    max-height: 50%;
 }
 
 #album-index .heading{
@@ -415,6 +425,15 @@
 	display: inline-block;
 }
 
+#album-index .album-link{
+    color: #000;
+}
+
+#album-index .album-link:hover{
+	color: #000;
+	text-decoration: none;
+}
+
 .like-box .fas{
 	color:#dc143c;
 }
@@ -438,6 +457,11 @@
 .post-edit .heading{
 	width: 100%;
 	text-align: center;
+}
+
+.post-box .edit-actions .btn-success-user{
+	width: 30%;
+	margin-top: 20px;
 }
 
 .post-box .edit-actions .btn-post{

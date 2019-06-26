@@ -1,6 +1,7 @@
 <div class="container talkroom-show">
 	<div class="row">
 		<div class="col-md-offset-3 col-md-6">
+
 			<h1 class="heading"><%= @room.name %></h1>
 		</div>
 		<div class="col-md-3 owner">
@@ -9,17 +10,24 @@
 				<%= @room.user.name %>
 			<% end %>
 		</div>
+		<% if @room.user == current_user || current_user.admin == true %>
+			<div class="col-md-offset-9 col-md-3">
+				<%= link_to "このルームを削除", room_path(@room.id), method: :delete, class:"btn btn-danger destroy" %>
+			</div>
+		<% end %>
 		<div class="col-md-offset-1 col-md-10">
 			<div  class="message-box">
 				<div id="messages" data-room_id="<%= @room.id %>">
 					<%= render @messages %>
 				</div>
 			</div>
-			<div class="field">
-				<%= label nil, nil, 'Say something:' %>
-				<%= text_field nil, nil, 'data-behavior': 'room_speaker', autofocus: true, class:"form-control" %>
+			<div class="field form-inline">
+				<%= label nil, nil, '入力:' %>
+				<%= text_field nil, nil, 'data-behavior': 'room_speaker', autofocus: true, class:"form-control chat-field" %>
 			</div>
-			<%= link_to '戻る', :back, data: {"turbolinks" => false} %>
+			<div class="col-md-offset-11 col-md-1">
+				<%= link_to '戻る', :back, data: {"turbolinks" => false}, class:"btn btn-default" %>
+			</div>
 		</div>
 	</div>
 </div>

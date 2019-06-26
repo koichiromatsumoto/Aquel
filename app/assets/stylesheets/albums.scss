@@ -27,7 +27,19 @@
 }
 
 .album-show .sidebar{
-	margin-top: 150px;
+	margin-top: 100px;
+}
+
+.album-show .sidebar .album-user{
+	color: #fff;
+	font-size: 22px;
+	margin-bottom: 30px;
+	text-align: right;
+}
+
+.album-show .sidebar .album-user:hover{
+	color: #fff;
+	text-decoration: none;
 }
 
 .album-show .album-box{

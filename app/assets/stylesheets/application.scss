@@ -43,6 +43,33 @@ body {
 	color: #000;
 }
 
+// フラッシュメッセージ
+.alert{
+	margin-top: 10px;
+	text-align: center;
+}
+
+// deviseのフラッシュメッセージをbootstrap適用
+$ng_alert_bg_color: #f2dede;
+$ng_alert_border_color: #eed3d7;
+$ng_alert_color: #b94a48;
+$ok_alert_bg_color: #dff0d8;
+$ok_alert_border_color: #d6e9c6;
+$ok_alert_color: #468847;
+
+.alert-alert {
+  background-color: $ng_alert_bg_color;
+  border-color: $ng_alert_border_color;
+  color: $ng_alert_color;
+  text-align: center;
+}
+.alert-notice {
+  background-color: $ok_alert_bg_color;
+  border-color: $ok_alert_border_color;
+  color: $ok_alert_color;
+  text-align: center;
+}
+
 /*ヘッダー*/
 header .navbar{
 	background-color: rgba(0,0,0,0.7);

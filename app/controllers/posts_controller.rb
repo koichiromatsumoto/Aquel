@@ -16,6 +16,7 @@ class PostsController < ApplicationController
     if params[:back]
       render :new
     elsif @post.save
+      flash[:success] = '投稿しました'
       redirect_to post_path(@post.id)
     else
       render :new
@@ -25,16 +26,26 @@ class PostsController < ApplicationController
   def index
     @late_posts = Post.order(created_at: :desc).page(params[:late_page]).per(12)
     @trend_posts = Post.where(created_at: Time.now.beginning_of_month..Time.now.end_of_month).order("favorites_count" => :desc).page(params[:trend_page]).per(12)
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def search_result
-    @search_posts = @search.result(distinct: true).page(params[:page]).per(12)
+    @search_late_posts = @search.result(distinct: true).order(created_at: :desc).page(params[:search_late_page]).per(12)
+    @search_trend_posts = @search.result(distinct: true).where(created_at: Time.now.beginning_of_month..Time.now.end_of_month).order("favorites_count" => :desc).page(params[:search_trend_page]).per(12)
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def show
     @post = Post.find(params[:id])
     @albums = Album.all.order(created_at: :desc)
     @album = Album.new
+    session[:post_id] = params[:id]
     respond_to do |format|
       format.html
       format.js
@@ -46,10 +57,14 @@ class PostsController < ApplicationController
   end
 
   def update
-    post = Post.find(params[:id])
-    if post.user = current_user
-      post.update(post_params)
-      redirect_to post_path(post.id)
+    @post = Post.find(params[:id])
+    if @post.user = current_user
+      if @post.update(post_params)
+        flash[:success] = '投稿を編集しました'
+        redirect_to post_path(@post.id)
+      else
+        render :edit
+      end
     else
       render :show
     end
@@ -59,6 +74,7 @@ class PostsController < ApplicationController
     post = Post.find(params[:id])
     if post.user = current_user
       post.destroy
+      flash[:success] = '投稿を削除しました'
       redirect_to posts_path
     else
       render :show
@@ -70,8 +86,14 @@ class PostsController < ApplicationController
     @album = Album.find(params[:album_id])
 
     if @album.user = current_user
-      @postalbum = PostAlbum.create(album_id: @album.id, post_id: @post.id)
-      redirect_to album_path(@album.id)
+      unless @album.posts.include?(@post)
+        @postalbum = PostAlbum.create(album_id: @album.id, post_id: @post.id)
+        flash[:success] = 'アルバムに追加しました'
+        redirect_to album_path(@album.id)
+      else
+        flash.now[:danger] = 'すでに追加されています'
+        render :show, id: params[:id]
+      end
     else
       render :show, id: params[:id]
     end
@@ -83,6 +105,7 @@ class PostsController < ApplicationController
     if @album.user = current_user
       @postalbum = PostAlbum.find_by(album_id: @album.id, post_id: @post.id)
       @postalbum.destroy
+      flash[:success] = 'アルバムから削除しました'
       redirect_to album_path(@album.id)
     else
       render 'albums/show', id: params[:album_id]

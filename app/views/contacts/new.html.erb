@@ -1,6 +1,8 @@
 <div class="container contact">
 	<div class="row">
-		<h1 class="heading">Contact</h1>
+		<div class="col-md-12">
+			<h1 class="heading">Contact</h1>
+		</div>
 		<div class="col-md-offset-1 col-md-10">
 
 			<div class="contact-form">
@@ -14,34 +16,36 @@
 	            <% end %>
 	        </div>
 
-            <div class="contact-list">
-				<% @contacts.each do |contact| %>
-				    <div class="contact-box">
-				    	<div class="contact-user">
-						    <%= attachment_image_tag contact.user, :profile_image, :fill, 50, 50, format:"jpg", fallback:"no_image.jpg", size:"50x50", class:"img-circle" %>
-						    <span class="contact-user-name"><%= contact.user.name %></span>
-						    <div class="contact-created-at"><%= contact.created_at.strftime('%Y/%m/%d %H:%M') %></div>
-						</div>
-						<div class="contact-content">
-					    	<%= contact.content %>
-					    </div>
-					    <div class="arrow">
-					    	<i class="fas fa-reply fa-rotate-180 fa-4x"></i>
-					    </div>
-					    <% if contact.reply %>
-						    <div class="reply-box">
-						    	<h4>管理者より</h4>
-						    	<div class="reply-created-at"><%= contact.updated_at.strftime('%Y/%m/%d %H:%M') %></div>
-							    <div class="contact-reply">
-							    	<%= contact.reply %>
-							    </div>
+	        <% if @contacts.exists? %>
+	            <div class="contact-list">
+					<% @contacts.each do |contact| %>
+					    <div class="contact-box">
+					    	<div class="contact-user">
+							    <%= attachment_image_tag contact.user, :profile_image, :fill, 50, 50, format:"jpg", fallback:"no_image.jpg", size:"50x50", class:"img-circle" %>
+							    <span class="contact-user-name"><%= contact.user.name %></span>
+							    <div class="contact-created-at"><%= contact.created_at.strftime('%Y/%m/%d %H:%M') %></div>
 							</div>
-						<% else %>
-						    <h3 class="no-reply">管理者からの回答をお待ちください</h3>
-						<% end %>
-					</div>
-				<% end %>
-			</div>
+							<div class="contact-content">
+						    	<%= contact.content %>
+						    </div>
+						    <div class="arrow">
+						    	<i class="fas fa-reply fa-rotate-180 fa-4x"></i>
+						    </div>
+						    <% if contact.reply %>
+							    <div class="reply-box">
+							    	<h4>管理者より</h4>
+							    	<div class="reply-created-at"><%= contact.updated_at.strftime('%Y/%m/%d %H:%M') %></div>
+								    <div class="contact-reply">
+								    	<%= contact.reply %>
+								    </div>
+								</div>
+							<% else %>
+							    <h3 class="no-reply">管理者からの回答をお待ちください</h3>
+							<% end %>
+						</div>
+					<% end %>
+				</div>
+			<% end %>
 
 		</div>
 	</div>
