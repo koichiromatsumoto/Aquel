@@ -26,7 +26,7 @@
 
           <div class="col-md-6 navbar-search search">
             <%= search_form_for @search, url: posts_search_result_path, class:"form-inline" do |f| %>
-              <%= f.search_field :title_or_text_or_hashtags_name_cont, class:"form-control field", placeholder:"検索ワードを入力してください" %>
+              <%= f.search_field :title_or_text_or_cont, class:"form-control field", placeholder:"検索ワードを入力してください" %>
               <span class="input-group-btn"><%= button_tag sanitize('<i class="glyphicon glyphicon-search"></i>'), :type => "submit",:class =>"btn  btn-success search-btn" %></span>
             <% end %>
           </div>
