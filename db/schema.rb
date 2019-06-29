@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_26_114657) do
+ActiveRecord::Schema.define(version: 2019_06_21_062510) do
 
   create_table "albums", force: :cascade do |t|
     t.integer "user_id"
@@ -18,22 +18,6 @@ ActiveRecord::Schema.define(version: 2019_06_26_114657) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_albums_on_user_id"
-  end
-
-  create_table "categories", force: :cascade do |t|
-    t.integer "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "contact_messages", force: :cascade do |t|
-    t.integer "contact_id"
-    t.integer "user_id"
-    t.text "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["contact_id"], name: "index_contact_messages_on_contact_id"
-    t.index ["user_id"], name: "index_contact_messages_on_user_id"
   end
 
   create_table "contacts", force: :cascade do |t|
@@ -56,10 +40,10 @@ ActiveRecord::Schema.define(version: 2019_06_26_114657) do
 
   create_table "messages", force: :cascade do |t|
     t.text "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.integer "room_id"
     t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["room_id"], name: "index_messages_on_room_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
@@ -71,15 +55,6 @@ ActiveRecord::Schema.define(version: 2019_06_26_114657) do
     t.datetime "updated_at", null: false
     t.index ["album_id"], name: "index_post_albums_on_album_id"
     t.index ["post_id"], name: "index_post_albums_on_post_id"
-  end
-
-  create_table "post_categories", force: :cascade do |t|
-    t.integer "post_id"
-    t.integer "category_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["category_id"], name: "index_post_categories_on_category_id"
-    t.index ["post_id"], name: "index_post_categories_on_post_id"
   end
 
   create_table "posts", force: :cascade do |t|

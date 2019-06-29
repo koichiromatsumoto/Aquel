@@ -9,7 +9,7 @@ module ApplicationCable
     private
 
       def find_verified_user
-        # コネクションの識別キーとしてcookieからser_idを取り出す
+        # コネクションの識別キーとしてcookieからuser_idを取り出す
         session_key = cookies.encrypted[Rails.application.config.session_options[:key]]
         unless session_key['warden.user.user.key'] == nil
           verified_id = session_key['warden.user.user.key'][0][0]

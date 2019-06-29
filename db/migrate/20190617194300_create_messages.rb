@@ -1,7 +1,8 @@
-class CreateRooms < ActiveRecord::Migration[5.2]
+class CreateMessages < ActiveRecord::Migration[5.2]
   def change
-    create_table :rooms do |t|
-      t.string :name
+    create_table :messages do |t|
+      t.text :content
+      t.references :room
       t.references :user
 
       t.timestamps
