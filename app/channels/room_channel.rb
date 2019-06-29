@@ -1,6 +1,6 @@
 class RoomChannel < ApplicationCable::Channel
   def subscribed
-  	# そのルームを購読しているユーザにメッセージをブロードキャストする
+  	# そのルームを購読している全てのユーザにメッセージをブロードキャストする
     stream_from "room_channel_#{params['room_id']}"
   end
 

@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
 
   # ヘッダーの検索機能に関するメソッド
   def  set_search
-    @search = Post.includes(:hashtags).ransack(params[:q])
+    @search = Post.ransack(params[:q])
     @search_late_posts = @search.result(distinct: true).order(id: :desc).all
     @search_trend_posts = @search.result(distinct: true).order('post_favorites_count' => 'DESC').all
   end
